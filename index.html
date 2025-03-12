@@ -1,1661 +1,850 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mean Absolute Error (MAE)</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precision in Cancer Detection</title>
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Underfitting vs Overfitting</title>
+    <title>ML in Medicine Arafat </title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-            background-color: #f4f7f9;
-            color: #2C3E50;
-        }
-        h1, h2 {
-            color: #1A5276;
-            text-align: center;
-        }
-        p {
-            text-align: justify;
-        }
-        .container {
-            max-width: 850px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .highlight {
-            background: #E3F2FD;
-            padding: 15px;
-            border-left: 6px solid #3498DB;
-            border-radius: 5px;
-        }
-        .warning {
-            background: #FDEDEC;
-            padding: 15px;
-            border-left: 6px solid #E74C3C;
-            border-radius: 5px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-    </style>
-</head>
-<body>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            padding: 20px;
-            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
             color: #333;
-            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+            transition: background 0.5s ease, color 0.5s ease;
         }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(90deg, #011325, #007bff);
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
-
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #16a085;
-            padding-bottom: 5px;
-        }
-
-        h3 {
-            color: #16a085;
-        }
-
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        .highlight {
+        .logo {
+            font-size: 28px;
             font-weight: bold;
-            color: #0e0c0c;
+            color: white;
         }
-
-        .example {
-            background: #ecf0f1;
-            padding: 10px;
-            border-left: 4px solid #3498db;
-            margin: 10px 0;
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
         }
-
-        /* Dark Mode Styles */
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            background: linear-gradient(45deg, #007bff, #00c851);
+            color: white;
+            border-radius: 0 0 50px 50px;
+            text-align: left;
+        }
+        .hero img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .hero-content {
+            max-width: 600px;
+        }
         .dark-mode {
-            background-color: #121212;
-            color: #e0e0e0;
+            background: #0d1117;
+            color: #c9d1d9;
         }
-
-        .dark-mode .container {
-            background: #1e1e1e;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        .dark-mode header {
+            background: #161b22;
         }
-
-        /* Dark Mode Toggle Button */
-        .dark-toggle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        .dark-mode .hero {
+            background: black;
+        }
+        .dark-mode nav a, .dark-mode .logo {
+            color: #c9d1d9;
+        }
+        section {
+            padding: 50px 20px;
+        }
+        .dark-mode-button {
             background: none;
             border: none;
             cursor: pointer;
         }
-
-        .dark-toggle img {
+        .dark-mode-button img {
             width: 30px;
             height: 30px;
         }
+
+        .content-box {
+        background: white;
+        padding: 30px;
+        margin: 20px auto;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        text-align: center;
+    }
+
+    .team-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    .team-member {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        width: 200px;
+        text-align: center;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .team-member:hover {
+        transform: translateY(-5px);
+    }
+
+    .team-member img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ddd;
+    }
+
+    .team-member h3 {
+        color: #cc0066;
+        font-size: 1.1em;
+        margin-top: 10px;
+    }
+
+    .position {
+        font-weight: bold;
+        color: #666;
+        font-size: 0.9em;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Typing Effect for the paragraph */
+    .typing {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid #007bff;
+        width: 0;
+        animation: typing 3s steps(40, end) forwards, blink 0.6s infinite;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink {
+        50% {
+            border-color: transparent;
+        }
+    }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 123, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #777;
+            text-align: center;
+        }
+
+
+        .dark-mode .content-box {
+            background: #161b22;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        
     </style>
 </head>
 <body>
-
-    <!-- Dark Mode Toggle Button -->
-    <button class="dark-toggle" onclick="toggleDarkMode()">
-        <img src="11.png" alt="Dark Mode">
-    </button>
-
-    <div class="container">
-        <div class="content-box">
-            <h1>What is Machine Learning?</h1>
-        </u4>
-        <h3> Machine Learning (ML) is a branch of artificial intelligence that allows computers to learn from data and make decisions without being explicitly programmed.</h3>
-        <u4>
-            
-            <div class="section">
-                <h2>1. Supervised Learning</h2>
-                <p>It is a type of ML where the model is trained using a labeled dataset. This means the data comes with both inputs and their corresponding outputs, so the model learns to map inputs to outputs correctly.</p>
-                <ul>
-                    <li><strong>Training Data:</strong> Includes both the input and the correct output (label).</li>
-                    <li><strong>Goal:</strong> Make accurate predictions on new, unseen data.</li>
-                </ul>
-                <h3>Types of Supervised Learning:</h3>
-                <ul>
-                    <li><strong>Classification:</strong> Predicts a category or class (e.g., Spam email detection: "Spam" or "Not Spam").</li>
-                    <li><strong>Regression:</strong> Predicts continuous values (e.g., House price prediction).</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>2. Unsupervised Learning</h2>
-                <p>It is a type of ML where the model learns from unlabeled data. The model tries to find patterns or structures in the input data without prior knowledge of outcomes.</p>
-                <ul>
-                    <li><strong>Training Data:</strong> Composed of inputs without labeled outputs.</li>
-                    <li><strong>Goal:</strong> Discover hidden patterns or groupings in the data.</li>
-                </ul>
-                <h3>Types of Unsupervised Learning:</h3>
-                <ul>
-                    <li><strong>Clustering:</strong> Groups similar data points together (e.g., Customer segmentation).</li>
-                    <li><strong>Dimensionality Reduction:</strong> Reduces the number of features while retaining important information (e.g., PCA).</li>
-                    <li><strong>Association Rule Learning:</strong> Finds relationships between variables (e.g., Market basket analysis).</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>3. Semi-Supervised Learning</h2>
-                <p>A combination of supervised and unsupervised learning, where the model is trained on a small amount of labeled data along with a large amount of unlabeled data.</p>
-                <h3>Common Techniques:</h3>
-                <ul>
-                    <li><strong>Self-Training:</strong> The model learns from labeled data and predicts labels for unlabeled data.</li>
-                    <li><strong>Graph-Based Methods:</strong> Use relationships between data points to infer labels.</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>4. Regression</h2>
-                <p>Regression techniques are used to predict continuous values based on input features.</p>
-                <h3>Common Techniques:</h3>
-                <ul>
-                    <li><strong>Linear Regression:</strong> Fits a straight line to the data.</li>
-                    <li><strong>Polynomial Regression:</strong> Captures non-linear relationships.</li>
-                    <li><strong>Ridge & Lasso Regression:</strong> Prevent overfitting.</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>5. Classification</h2>
-                <p>Classification involves categorizing data into predefined classes. Example: Detecting whether an email is spam or not spam.</p>
-            </div>
-            <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Example</title>
-</head>
-<body>
-    <img src="classification .png" alt="Classification vs Regression">
-    <h2>1. Target</h2>
-    <p><strong>Definition:</strong> The output variable that a machine learning model aims to predict.</p>
-    <ul>
-        <li><strong>Output Type:</strong> Can be continuous (e.g., prices) or categorical (e.g., classes).</li>
-        <li><strong>Dependent Variable:</strong> The variable the model tries to estimate.</li>
-    </ul>
-    <h3>Importance:</h3>
-    <ul>
-        <li><strong>Guides Learning:</strong> Provides the ground truth for training.</li>
-        <li><strong>Performance Metric:</strong> Used to evaluate model accuracy.</li>
-    </ul>
-    <h3>Examples:</h3>
-    <ul>
-        <li><strong>Regression:</strong> House price prediction.</li>
-        <li><strong>Classification:</strong> Email spam detection.</li>
-    </ul>
-    
-    <h2>2. Feature</h2>
-    <p><strong>Definition:</strong> Features are individual independent variables that serve as inputs for a machine learning model.</p>
-    <ul>
-        <li><strong>Input Variables:</strong> Each feature represents a column in the dataset.</li>
-        <li><strong>Role in Predictions:</strong> Models use features to make predictions or classifications.</li>
-    </ul>
-    <h3>Feature Engineering:</h3>
-    <p>The process of creating new features from existing ones to improve model performance.</p>
-    <h3>Terminology:</h3>
-    <ul>
-        <li><strong>Attributes:</strong> Another term for features.</li>
-        <li><strong>Dimensions:</strong> The total number of features in the dataset.</li>
-    </ul>
-    <h3>Example:</h3>
-    <p>In a dataset predicting house prices, features could include size, location, and number of bedrooms.</p>
-    
-    <h2>3. Label</h2>
-    <p><strong>Definition:</strong> Labels are the final output. You can also consider the output classes to be the labels.</p>
-    
-    <h2>4. Overfitting</h2>
-    <p><strong>Definition:</strong> Overfitting occurs when a model learns the training data too well, including noise, resulting in poor performance on new, unseen data.</p>
-    <h3>Key Points:</h3>
-    <ul>
-        <li><strong>Generalization:</strong> Ability to make accurate predictions on new data.</li>
-        <li><strong>Signal-to-Noise Ratio:</strong> High ratios improve generalization; low ratios contribute to overfitting.</li>
-    </ul>
-    <h3>Symptoms:</h3>
-    <ul>
-        <li>High accuracy on training data.</li>
-        <li>Low accuracy on validation/test data.</li>
-    </ul>
-    <h3>Prevention Techniques:</h3>
-    <ul>
-        <li><strong>Cross-Validation:</strong> Evaluate model performance on different data subsets.</li>
-        <li><strong>Regularization:</strong> Use L1 or L2 regularization to reduce model complexity.</li>
-        <li><strong>Pruning:</strong> Simplify decision trees by removing unimportant branches.</li>
-    </ul>
-    <h3>Example:</h3>
-    <p>A model that memorizes training examples but fails to generalize.</p>
-    
-    <h2>5. Regularization</h2>
-    <p><strong>Definition:</strong> A technique to prevent overfitting by adding a penalty to the model's complexity.</p>
-    <h3>Key Points:</h3>
-    <ul>
-        <li><strong>Complexity Control:</strong> Estimates a preferred level of model complexity.</li>
-        <li><strong>Generalization Improvement:</strong> Enhances the model's ability to perform well on new data.</li>
-    </ul>
-    <h3>Methodology:</h3>
-    <ul>
-        <li><strong>Penalty Addition:</strong> Applies penalties to model parameters, reducing their values.</li>
-        <li><strong>Common Techniques:</strong>
+    <header>
+        <div class="logo">AI Lab</div>
+        <nav>
             <ul>
-                <li><strong>L1 Regularization (Lasso):</strong> Encourages sparsity by adding the absolute values of coefficients as penalties.</li>
-                <li><strong>L2 Regularization (Ridge):</strong> Discourages large weights by adding squared coefficients as penalties.</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research-interests">Research Interests</a></li>
+                <li><a href="#education">Education & Work Experience</a></li>
+              
+
+                <li><a href="#publications">Publications</a></li>
+                <a href="#ourteam">Our Team</a>
+                <li><a href="#On Going Projects">My works</a></li>
+                <!-- <li><a href="#My research works">On Going Projects</a></li> -->
+                <li><a href="#ml">Learning </a></li>
+                
+                
+                <!-- <li><a href="#OurTeam">Our Team</a></li> -->
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </li>
-    </ul>
-    <h3>Example:</h3>
-    <p>In linear regression, L2 regularization helps prevent fitting noise in the training data.</p>
+        </nav>
+        <button class="dark-mode-button" onclick="toggleDarkMode()">
+            <img src="11819704.png" alt="">
+        </button>
+    </header>
     
-    <h2>6. Regression</h2>
-    <p><strong>Definition:</strong> Regression is a way to model the relationship between variables by improving the model step by step based on the errors in its predictions.</p>
-    <h3>Types of Regression:</h3>
-    <ul>
-        <li>Ordinary Least Squares Regression (OLSR)</li>
-        <li>Linear Regression</li>
-        <li>Logistic Regression</li>
-        <li>Stepwise Regression</li>
-        <li>Multivariate Adaptive Regression Splines (MARS)</li>
-        <li>Locally Estimated Scatterplot Smoothing (LOESS)</li>
-    </ul>
-    <img src="Regression.png" alt="Regression ">
-
-    <h1>Machine Learning Algorithms</h1>
-    
-    <h2>7. Instance-based Algorithms</h2>
-    <p>Instance-based learning is a way for a machine learning model to make decisions by remembering examples from the training data.</p>
-    <h3>How it Works:</h3>
-    <ul>
-        <li>The model stores examples from the training data in its memory.</li>
-        <li>When new data comes in, the model compares it to the stored examples to find the most similar one.</li>
-        <li>The model uses this similarity to make a prediction.</li>
-    </ul>
-    <h3>Example:</h3>
-    <p>Imagine you want to teach the model to recognize fruits. You give it examples of apples and oranges. When you show it a new fruit, it compares it to the stored examples to decide if it is an apple or an orange.</p>
-    <img src="Instance-based Algorithms.jpg" alt="Instance-based Algorithms">
-    <h2>8. Regularization</h2>
-    <h2>Regularization in Machine Learning</h2>
-    <p>Regularization helps make a machine learning model better at predicting new data by stopping it from being too complicated.</p>
-        
-    <h3>How Regularization Works:</h3>
-    <ul>
-    <li>Regularization adds a <span class="">penalty</span> to the model for being too complex.</li>
-    <li>This penalty makes the model simpler and more focused on the most important features (like house size or number of rooms).</li>
-    </ul>
-
-    <h3>Why Regularization?</h3>
-     <p>Imagine you're teaching a model to predict house prices. If the model looks at every tiny detail (like the color of the walls or the shape of the windows), it might overfit the training data and fail to work well on new houses. Regularization prevents this by reducing the importance of less useful details.</p>
-        
-    <div class="example">
-     <strong>Example:</strong>
-     <ul>
-    <li><span class="">Without regularization:</span> The model thinks wall color is as important as house size.</li>
-    <li><span class="">With regularization:</span> The model learns that house size is much more important and ignores wall color.</li>
-     </ul>
+    <section class="hero" id="home">
+        <img src="my image .jpg" alt="Arafat Ali Mondal">
+        <div class="hero-content">
+            <h2>Arafat Ali Mondal</h2>
+            <h2>Master's in AI</h2>
+            <a href="https://www.makautexam.net/" target="_blank">
+                Maulana Abul Kalam Azad University of Technology, West Bengal, India
+            </a>            
+            <!-- <h3>Maulana Abul Kalam Azad University of Technology, West Bengal, India</h3> -->
+            <p>I am Arafat Ali Mondal. I completed my Master’s in Artificial Intelligence in 2024 and have one year of experience in AI and sensor technology as a Research and Development Contributor at the CRTL Lab, NCSM, since March 2024. My work focuses on system design and AI/ML-driven applications, leveraging innovative technologies to develop efficient and intelligent solutions. My area of research is AI technology in agriculture and healthcare on other sensor tech. My master's thesis was to create an AI web and Android application for agriculture that promotes automation through ML and DL. I am also engaged in AI-based display and sensor technology, which is all about working on real-world applications integrating AI into interactive and automated devices. In healthcare, I work with experts in creating ML-based healthcare solutions that combine ML and sensor technology to create innovation. Without AI research, I have web development skills in frontend and backend development. I create user-centric, AI-enabled web applications with maximum emphasis on system optimization, scalability, and smooth user experiences. I have four research papers, comprising a peer-reviewed journal article and an IEEE conference paper. My dream is to combine AI, sensor technology, and web development and Application development in order to develop groundbreaking solutions in the healthcare and automation sectors and propel the development of AI-driven smart systems. I love machine learning, healthcare innovations, and soft robotics. Presently, I am looking for internship and PhD positions in these areas to further develop my skills and contribute to state-of-the-art research and development. 
+            </p>
         </div>
-
- <h3>Types of Regularization:</h3>
-<ul>
-    <li>Ridge Regression</li>
-<li>Least Absolute Shrinkage and Selection Operator (LASSO)</li>
-<li>Elastic Net</li>
-<li>Least-Angle Regression (LARS)</li>
- </ul>
-
- <h3>Key Regularization Techniques:</h3>
-<ul>
-<li><span class="">L1 Regularization (Lasso):</span> Removes unimportant features by making their weight zero.</li>
-<div class="example">Example: The model completely ignores wall color if it’s not helpful.</div>
-<li><span class="">L2 Regularization (Ridge):</span> Reduces the influence of unimportant features but doesn’t remove them completely.</li>
-<div class="example">Example: The model reduces the effect of wall color but still keeps it slightly.</div>
-</ul>
-<img src="Regularization Algoritms.jpg" alt="Regularization Algoritms">
-
-</body>
+    </section>
     
-    <h2>9. Decision Tree Algorithms</h2>
-        <p>A decision tree is a way to make predictions by asking a series of questions, one at a time, and making a decision based on the answers. It looks like a tree with branches, where each branch represents a question or choice.</p>
-        
-        <h3>Why Use a Decision Tree?</h3>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    </head>
+    <body>
+    <section id="research-interests" class="content-box">
+        <h2>
+            <i class="fas fa-microscope" style="color: #28a745;"></i> Research Interests
+        </h2>
         <ul>
-            <li><span class="">Easy to Understand:</span> It’s like following a step-by-step guide.</li>
-            <li><span class="">Fast and Efficient:</span> Works well on many kinds of data.</li>
-            <li><span class="">Flexible:</span> Can solve problems where data is either numbers or words (like "hot" or "cold", 0 or 1).</li>
+            <li>Medical Image Computing</li>
+            <li>Data Science in Medicine</li>
+            <li>Artificial Intelligence in Medicine</li>
+            <li>Human-Robot Interaction</li>
+            <li>Soft Robotics</li>
         </ul>
+    </section>
 
-        <h3>Uses of Decision Trees:</h3>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    </head>
+    <body>
+    <section id="education" class="content-box">
+        <h2>
+            <i class="fas fa-graduation-cap" style="color: #ffcc00;"></i> Education
+        </h2>
         <ul>
-            <li><span class="">Classification Problems:</span> Predict categories like "Yes" or "No."</li>
-            <div class="example">Example: Will a customer buy a product?</div>
-            <li><span class="">Regression Problems:</span> Predict numbers like house prices or sales.</li>
-            <div class="example">Example: What is the price of a house based on size and location?</div>
+                <h4>M.Tech in AI, 2024</h4>
+                <a href="https://www.makautexam.net/" target="_blank">
+                    MAKAUT, West Bengal, India
+                </a>
+            </li>
+                <h4>B.Tech in EE, 2021</h4>
+                <a href="https://gnit.ac.in/" target="_blank">
+                    GNIT, West Bengal, India
+                </a>
+            </li>
+                <h4>Diploma (Polytechnic) in EE, 2015</h4>
+                <a href="https://www.dip.rahul.ac.in/" target="_blank">
+                    DIP, West Bengal, India
+                </a>
+            </li>
         </ul>
-
-        <h3>How It Works:</h3>
-        <ul>
-            <li><span class="">Ask a question:</span> Start with one question about the data.</li>
-            <div class="example">Example: "Is the weather hot?"</div>
-            <li><span class="">Branch out:</span> Based on the answer, go to the next question.</li>
-            <div class="example">Example: If "Yes," ask, "Is the person a child?"</div>
-            <li><span class="">Make a decision:</span> At the end of the questions, make a final prediction.</li>
-            <div class="example">Example: "Yes, they will buy ice cream."</div>
-        </ul>
-        <img src="Decision Tree Algorithms.jpg" alt="Decision Tree Algorithms">
-    </div>
-    <h2>10. Bayesian Algorithms</h2>
-        <p>Bayesian methods use a formula called <span class="">Bayes' Theorem</span> to predict things based on probabilities. These methods are often used for tasks like sorting items into categories (classification) or predicting numbers (regression).</p>
-        
-        <h3>What is a Naive Bayes Classifier?</h3>
-        <ul>
-            <li>It looks at different parts of your data, called <span class="">features</span> (like words in an email or symptoms of a disease).</li>
-            <li>It assumes each feature is independent, even if they are actually related.</li>
-            <li>It combines all the features to calculate the probability of something belonging to a specific group or category (e.g., spam or not spam, sick or healthy).</li>
-            <li>It’s called "<span class="">naive</span>" because of the assumption that features are independent, but it still works well in many cases!</li>
-        </ul>
-
-        <h3>Example: Predicting Spam Emails</h3>
-        <p>Imagine you are predicting if an email is spam or not spam. Features could be:</p>
-        <div class="example">
+    </section>
+    
+    <!-- <section id="work-experience" class="content-box">
+        <h2>Work Experience</h2> -->
+        <head>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        </head>
+        <body>
+        <section id="work-experience" class="content-box">
+            <h2>
+                <i class="fas fa-briefcase" style="color: #007bff;"></i> Work Experience
+            </h2>
             <ul>
-                <li>Does the email contain the word "<span class="">free</span>"?</li>
-                <li>Does the email have a lot of links?</li>
-                <li>Is the email written in all capital letters?</li>
-            </ul>
-            <p>Even if these features might relate to each other, Naive Bayes assumes they don’t and looks at each one separately. It then combines their effects to guess whether the email is spam.</p>
-        </div>
-
-        <h3>Types of Bayesian Algorithms:</h3>
+    
+        <h3>Research Training and Internships [Feb 2024 - Present] Kolkata, India</h3>
+        <p>
+            <a href="https://ncsm.gov.in/" target="_blank" style="text-decoration: none; font-weight: bold; color: #007BFF;">
+                National Council Of Science Museums (NCSM)
+            </a> 
+            in Central Research and Training Laboratory (CRTL), Kolkata, India.
+        </p>
+        <p><strong>Role:</strong> Research & Development </p>
+            </p> <strong>Advisor:</strong> Mr. Shatadal Ghosh</p>
+        <h4>Title: Personalized Content Delivery: An AI-Based Age Estimation Approach  [Ongoing]</h4>
         <ul>
-            <li><span class="">Naive Bayes</span></li>
-            <li><span class="">Gaussian Naive Bayes</span></li>
-            <li><span class="">Multinomial Naive Bayes</span></li>
-            <li><span class="">Averaged One-Dependence Estimators (AODE)</span></li>
-            <li><span class="">Bayesian Belief Network (BBN)</span></li>
-            <li><span class="">Bayesian Network (BN)</span></li>
+            <li>Designed a smart AI-based PCD model leveraging visitor characteristics such as height and facial images for age group classification, achieving <strong>97% classification accuracy</strong>.</li>
+            <li>Delivered personalized content with <strong>95% accuracy</strong> based on visitor interests, significantly enhancing user engagement.</li>
+            <li>Currently preparing this work for publication in a conference journal.</li>
         </ul>
-        <img src="Bayesian Algorithms.jpg" alt="Bayesian Algorithms">
-    <h2>11. Clustering Algorithms</h2>
- 
-        <p><span class="">Clustering</span> is a way to group similar items together based on their characteristics.</p>
-        <p>It is both a <span class="">problem</span> (how to group data) and a <span class="">method</span> (techniques used to group it).</p>
-        <p>Clustering looks for patterns and structures in the data and tries to find groups where the items are similar to each other.</p>
-
-        <h3>Types of Clustering Algorithms:</h3>
+    
+        <h4> Title: Interactive Display System for Spatial Content Exploration in Museums  [Completed and Published] </h4>
         <ul>
-            <li><span class="">k-Means</span></li>
-            <li><span class="">k-Medians</span></li>
-            <li><span class="">Expectation Maximization (EM)</span></li>
-            <li><span class="">Hierarchical Clustering</span></li>
+            <li>Designed an innovative system that tracks a white sheet of paper and projects interactive content onto it, enhancing spatial engagement in educational settings.</li>
+            <li>Focused on immersive, topic-based learning for subjects such as geographic maps, human anatomy, and dioramas, fostering deeper exploration for users.</li>
+            <li>Achieved almost <strong>80% accuracy</strong>, significantly improving the educational experience in science museums.</li>
+            <li>Published in a conference journal in 2024.</li>
         </ul>
-        <img src="Clustering Algorithms .jpg" alt="Clustering Algorithms">
-    </ul>
-    <h1></h1>
-        <h2>12. Dimensionality Reduction</h2>
-        <p><span class="">Dimensionality reduction</span> is a method used to simplify data by reducing the number of features or dimensions while keeping the important information.</p>
-        <p>It helps summarize complex data with many features into fewer, meaningful features.</p>
-        <p>It looks for the <span class="">underlying structure</span> in the data without labels (unsupervised learning) and captures the most important details while removing unnecessary information.</p>
-
-        <h3>Why Use Dimensionality Reduction?</h3>
+    
+        <h4>Technology & Programming Skills</h4>
         <ul>
-            <li><span class="">Visualization:</span> Helps in plotting high-dimensional data into 2D or 3D for better understanding.</li>
-            <li><span class="">Simplification:</span> Makes data easier to analyze, especially for machine learning.</li>
-            <li><span class="">Performance Boost:</span> Works alongside classification and regression to improve accuracy and speed.</li>
-        </ul>
-
-        <div class="example">
-            <h3>Example:</h3>
-            <p>Imagine you have data about houses with many features like <span class="">size</span>, <span class="">number of rooms</span>, <span class="">location</span>, <span class="">age</span>, etc.</p>
-            <p>Dimensionality reduction can summarize this data into fewer features like <span class="">price</span> and <span class="">size</span> without losing much information, making it easier to analyze.</p>
-        </div>
-
-        <h3>Types of Dimensionality Reduction:</h3>
+            <li><strong>Technology:</strong> AI (ML, DL, CV, MediaPipe), Electronics, Sensors, and more.</li>
+            <li><strong>Programming Languages:</strong> Python, Flutter, Flask, HTML, CSS, and more.</li>
+        <h3>Bachelor's and Master’s Thesis work [2021-2025]  Kolkata India</h3>
+    
+        <h4> Title: Quality Grading of Apples Based on Physical Traits Using Image Analysis [Feb 2023 – Jan 2024]</h4>
+        <p><strong>Master’s Thesis Advisor:</strong> Dr. Prof. Nabarun Bhattacharyya </p>
         <ul>
-            <li>Principal Component Analysis (PCA)</li>
-            <li>Principal Component Regression (PCR)</li>
-            <li>Partial Least Squares Regression (PLSR)</li>
-            <li>Sammon Mapping</li>
-            <li>Multidimensional Scaling (MDS)</li>
-            <li>Projection Pursuit</li>
-            <li>Linear Discriminant Analysis (LDA)</li>
-            <li>Mixture Discriminant Analysis (MDA)</li>
-            <li>Quadratic Discriminant Analysis (QDA)</li>
-            <li>Flexible Discriminant Analysis (FDA)</li>
+            <li>Developed a user-friendly web and Android application for apple sorting based on physical traits (color, size, and shape).</li>
+            <li>Integrated ML and CV technologies with Flutter, Flask, and other frameworks.</li>
+            <li>Achieved <strong>95% accuracy</strong>, with a prediction range of 89-95% based on the user's apple image.</li>
+            <li>Addressed high-cost challenges by eliminating expensive laboratory requirements.</li>
+            <li>Currently preparing this work for publication in a conference journal.</li>
         </ul>
-        <img src="Dimensionality Reduction Algo.jpg" alt="Dimensionality Reduction Algorithms">
-    <h1>13. Association Rule Learning</h1>
-        <p><span class="">Association Rule Learning</span> is a method used to find relationships between variables in data.</p>
-        <p>It extracts rules that explain how different items or variables are related to each other.</p>
-        <p>The technique is particularly useful in large datasets to identify important associations, helping businesses and organizations make data-driven decisions.</p>
-
-        <h3>Why Use Association Rule Learning?</h3>
+    
+        <h4>Title: Advanced Apple Sorting and Quality Grading Application Using Graph Neural Networks, Vision Transformers and Convolutional Neural Networks [Feb 2024 – Aug 2024]</h4>
         <ul>
-            <li>Helps discover hidden <span class="">patterns and relationships</span> in data.</li>
-            <li>Used in <span class="">market basket analysis</span> to determine product purchasing trends.</li>
-            <li>Helps businesses improve <span class="">marketing strategies</span> and optimize <span class="">product placement</span>.</li>
+            <li>Explored advanced DL techniques, including ViTs, GNNs, and CNNs, to optimize apple sorting.</li>
+            <li>Utilized a 360-degree view dataset of apples, achieving <strong>97% accuracy</strong>.</li>
+            <li>Developed an ML-driven web and Android application for automated apple sorting.</li>
+            <li>Currently preparing this work for publication in a conference journal.</li>
         </ul>
-
-        <div class="example">
-            <h3>Example:</h3>
-            <p>In retail, association rules might reveal that <span class="">customers who buy bread often also buy butter</span>.</p>
-            <p>This information can be used for marketing, such as offering discounts on butter when a customer buys bread.</p>
-        </div>
-
-        <h3>Types of Association Rule Learning Algorithms:</h3>
+    
+        <h4>Title: A Novel Method for Breast Cancer Detection Using KNN  [Aug 2024 – Ongoing]</h4>
+        <strong>Advisor:</strong> Dr. Sayani Mondal, Assistant Professor, Dept. of CS & Engineering, Sister University, Kolkata, India</p>
         <ul>
-            <li><span class="">Apriori Algorithm:</span> Uses frequent itemsets to generate association rules.</li>
-            <li><span class="">Eclat Algorithm:</span> Uses a depth-first search approach to discover frequent itemsets.</li>
+            <li>Developed an optimal KNN-based model for breast cancer detection, achieving <strong>97% accuracy</strong> on the MIAS dataset.</li>
+            <li>Published in an international peer-reviewed journal.</li>
         </ul>
-        <img src="Association Rule Learning Algorithms .jpg" alt="Association Rule Learning Algorithms">
-    <h1>14.Ensemble Algorithm</h1>
-                 <p>Topic is Pending</p>
-        <h2> 15. Bias and Variance in Machine Learning</h2>
-        
-        <h3>What is Bias?</h3>
-        <p><span class="">Bias</span> is a type of error that occurs when a model makes overly simplistic assumptions about the data, leading to inaccurate predictions.</p>
+    
+        <h4> Title: Increasing Efficiency of Solar Cells Using AI and Nanotechnology  [Mar 2022 – Feb 2023, Published]</h4>
+        <strong>Advisor:</strong> Moumita Ghosh (Dept. of EE)</p>
         <ul>
-            <li>Bias is the difference between the <span class="">average prediction</span> made by the model and the actual correct value.</li>
-            <li>A model with <span class="">high bias</span> ignores important patterns in the data.</li>
-            <li>It oversimplifies the problem, leading to <span class="">poor performance</span> on both training and test datasets.</li>
-            <li>High bias leads to <span class="">underfitting</span>, where the model cannot capture underlying trends.</li>
+            <li>Investigated AI-driven manufacturing processes and nanoparticle-based light scattering for efficiency improvement.</li>
+            <li>Published in an international reviews journal.</li>
         </ul>
-
-        <div class="example">
-            <h3>Example:</h3>
-            <p>Imagine trying to predict house prices using only the number of bedrooms, ignoring features like location, size, or condition. This oversimplification (high bias) leads to inaccurate predictions.</p>
-        </div>
-
-        <h3>What is Variance?</h3>
-        <p><span class="">Variance</span> measures how much a model's predictions change when trained on different subsets of the training data.</p>
+    
+        <h4>Title: Design and Analysis of P&O Algorithm-Based MPPT Solar System in PSIM  [Apr 2019 – May 2021, Published]</h4>
+         <strong>Bachelor’s Thesis Advisor:</strong> Mr. Shyamal Kumar Roy, Assistant Professor (Dept. of EE), GNIT</p>
         <ul>
-            <li>Variance shows how <span class="">sensitive</span> a model is to small changes in data.</li>
-            <li>High variance causes <span class="">overfitting</span>, leading to poor performance on new data.</li>
+            <li>Developed a maximum power point tracking (MPPT) algorithm to address non-identical losses in solar panels.</li>
+            <li>Implemented and analyzed the Perturb and Observe (P&O) algorithm using PSIM software.</li>
+            <li>Published in an international peer-reviewed journal.</li>
         </ul>
-
-        <div class="example">
-            <h3>Example:</h3>
-            <p>Imagine a student memorizing past exam answers instead of understanding concepts. They excel in practice tests but fail in exams with new questions because they cannot generalize their knowledge.</p>
-        </div>
-            </tr>
-            <tr>
-                <h2>Bias vs. Variance</h2>
-                <table border="1" cellpadding="10">
-                    <tr>
-                        <th>Bias</th>
-                        <th>Variance</th>
-                    </tr>
-                    <tr>
-                        <td>Difference between average prediction and actual value.</td>
-                        <td>Variability of predictions across different datasets.</td>
-                    </tr>
-                    <tr>
-                        <td>Occurs when a model oversimplifies the data.</td>
-                        <td>Occurs when a model is too sensitive to training data.</td>
-                    </tr>
-                    <tr>
-                        <td>Leads to underfitting (poor performance on training & test data).</td>
-                        <td>Leads to overfitting (good on training but poor on test data).</td>
-                    </tr>
-                    <tr>
-                        <td>Example: Using a straight line to fit curved data.</td>
-                        <td>Example: Drawing a zigzag line that fits every point perfectly but fails on new data.</td>
-                    </tr>
-                </table>
+    
+        <h4>Technical Skills</h4>
+        <ul>
+            <li><strong>Technologies:</strong> AI (ML, DL, CV), Nanotechnology, Sensor Technology</li>
+            <li><strong>Programming Languages:</strong> Python, Flutter, Flask, HTML, CSS, and more</li>
+        </ul>
+    </section>
+        </ul>
+    </section>
+    <section id="publications" class="content-box">
+        <h2>Publications</h2>
+        <ul>
+            <head>
+                <style>
+                    /* Simple Publications Section Styling */
+                    #publications {
+                        background: #f8f9fa;
+                        color: #333;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+                        text-align: center;
+                        width: 80%;
+                        margin: auto;
+                    }
             
+                    #publications h2 {
+                        font-size: 24px;
+                        border-bottom: 2px solid #007bff;
+                        display: inline-block;
+                        padding-bottom: 5px;
+                    }
+            
+                    #publications ul {
+                        list-style: none;
+                        padding: 0;
+                        text-align: left;
+                        margin-top: 15px;
+                    }
+            
+                    #publications li {
+                        font-size: 16px;
+                        padding: 10px;
+                        border-bottom: 1px solid #ddd;
+                    }
+            
+                    #publications a {
+                        color: #007bff;
+                        text-decoration: none;
+                    }
+            
+                    #publications a:hover {
+                        text-decoration: underline;
+                    }
+                </style>
+            </head>
+            
+            <!-- <body>
+                <section id="publications">
+                    <h2>Publications</h2> -->
+                    <ul>
+                        <li>
+                            <strong>Interactive Display System for Spatial Content Exploration in Museums</strong> - ICICEC 2024  
+                            <br> DOI: <a href="https://doi.org/10.1109/ICICEC62498.2024">10.1109/ICICEC62498.2024</a>
+                        </li>
+                    
+                            <!-- <strong>A Novel Method for Breast Cancer Detection Using KNN</strong> - YMER  
+                            <br> DOI: <a href="https://doi.org/10.37896/YMER24.01/57">10.37896/YMER24.01/57</a> |  
+                            <a href="https://www.researchgate.net/publication/388364146_A_Novel_Method_for_Breast_Cancer_Detection_Using_KNN">Read Paper</a>
+                        </li> -->
+                        <li>
+                            <strong>A Novel Method for Breast Cancer Detection Using KNN</strong> - YMER  
+                            <br> ISSN: 0044-0477 | Volume 24, Issue 01 (Jan 2025) | Pages: 807-813  
+                            <br> DOI: <a href="https://doi.org/10.37896/YMER24.01/57">10.37896/YMER24.01/57</a> |  
+                            <a href="https://www.researchgate.net/publication/388364146_A_Novel_Method_for_Breast_Cancer_Detection_Using_KNN">Read Paper</a>
+                        </li>
+                        <li>
+                            <strong>AI and Nanotechnology for Solar Cells</strong> - IJRAR  
+                            <br> ID: IJRAR23A2791 |Volume 10, Issue 1 (March 2023) | Pages: 433-435
+                            E-ISSN: 2348-1269|
+                            <br> DOI: <a href="http://doi.one/10.1729/Journal.33448"> IJRAR23A2791</a>
+
+                        </li>
+                        <li>
+                            <!-- <strong>MPPT Solar System in PSIM</strong> - YMER  
+                            <br> <a href="https://ymerdigital.com/">YMER Digital</a> |  
+                            <a href="https://www.researchgate.net/profile/Arafat-Mondal/publication/379994375_Design_and_Analysis_of_PO_algorithm_based_MPPT_solar_system_in_PSIM/links/66263d8d43f8df018d1faf2b/Design-and-Analysis-of-P-O-algorithm-based-MPPT-solar-system-in-PSIM.pdf">Read Paper</a>
+                        </li> -->
+                        <strong>MPPT Solar System in PSIM</strong> - YMER  
+                <br> ISSN: 0044-0477 | Volume 21, Issue 6 (June 2022) | Pages: 1188-1194  
+                <br> <a href="http://ymerdigital.com">YMER Digital</a> |  
+                <a href="https://www.researchgate.net/profile/Arafat-Mondal/publication/379994375_Design_and_Analysis_of_PO_algorithm_based_MPPT_solar_system_in_PSIM/links/66263d8d43f8df018d1faf2b/Design-and-Analysis-of-P-O-algorithm-based-MPPT-solar-system-in-PSIM.pdf">Read Paper</a>
+                    </ul>
+                </section>
             </body>
-        
-        <img src="math representation.jpg" alt="math representation">
-        <img src="Bias error.jpg" alt="Bias error">
-        <img src="Variance error.jpg" alt="Variance error">
-        <img src="Bias-Variance Tradeoff.jpg" alt="Bias-Variance Tradeoff">
-        
-        <h2> 16. Overfitting and Underfitting</h2>
-        <p>If our <span class="">model complexity</span> exceeds the optimal level, we experience <span class="">overfitting</span>; if it falls short, we have <span class="">underfitting</span>.</p>
-        <p>There is no analytical way to find this sweet spot. Instead, we must use an <span class="">accurate measure of prediction error</span> and explore different levels of model complexity to minimize overall error.</p>
-        <p>Choosing the right error measure is crucial, as inaccurate measures can be misleading.</p>
-
-        <h2>Covariance</h2>
-        <p><span class="">Covariance</span> helps understand the <span class="">direction</span> of the relationship between two variables.</p>
-        <ul>
-            <li>It is used to analyze relationships between features before applying dimensionality reduction techniques like <span class="">Principal Component Analysis (PCA)</span>.</li>
-        </ul>
-
-        <h2>Correlation</h2>
-        <p><span class="">Correlation</span> is more commonly used than covariance because it is standardized and easier to interpret.</p>
-        <ul>
-            <li>It measures both the <span class="">strength</span> and <span class="">direction</span> of relationships.</li>
-            <li>It is used to analyze relationships between health factors, like exercise frequency and cholesterol levels.</li>
-            <li>Helps identify <span class="">multicollinearity</span> (high correlation between features) which may affect model performance.</li>
-        </ul>
-
-        <h2>Key Decision: When to Use Covariance vs. Correlation</h2>
-        <ul>
-            <li>Use <span class="">covariance</span> when you need to analyze the <span class="">direction</span> of the relationship but don't care about comparability or strength.</li>
-            <li>Use <span class="">correlation</span> when you want to measure both <span class="">strength and direction</span> and compare relationships across datasets.</li>
-        </ul>
-    <img src="Difference.jpg" alt="Difference">
-        <h2> 17. Model Metrics</h2>
-        <p>Evaluating a machine learning model is <span class="">very important</span> to understand how well it performs.</p>
-        <p>Using just one metric, like accuracy, may not always show the full picture.</p>
-        <p>A model might have good accuracy but perform poorly on other measures like <span class="">log-loss</span> (measures errors in predictions) or <span class="">precision and recall</span> (important for imbalanced datasets).</p>
-        <p>Metrics like <span class="">AUC (Area Under the Curve)</span> help measure how well a model distinguishes between classes.</p>
-
-        <h3>Common Model Metrics:</h3>
-        <ul>
-            <li><span class="">Accuracy:</span> Measures overall correctness but can be misleading in imbalanced datasets.</li>
-            <li><span class="">Precision and Recall:</span> Useful for ranking or when false positives and false negatives are important, like in medical tests.</li>
-        </ul>
-
-        <div class="example">
-            <h3>Example:</h3>
-            <p>In medical diagnosis, a model with high accuracy might not be good if it misclassifies rare diseases. Here, <span class="">recall</span> is more important to ensure fewer false negatives.</p>
-        </div>
-    
-        <h2>18. Mean Absolute Error (MAE)</h2>
-        <p><span class="">MAE</span> calculates the average difference between the actual values and the predicted values.</p>
-        <ul>
-            <li>It shows how much, on average, the predictions are off from the true values.</li>
-            <li>It does not indicate whether the errors come from predicting too high or too low.</li>
-            <li>MAE only gives the <span class="">absolute difference</span> between actual and predicted values.</li>
-        </ul>
-
-        <div class="example">
-            <h3>Example Calculation:</h3>
-            <p>If the actual values are [10, 20, 30] and the predicted values are [12, 18, 28]:</p>
-            <ul>
-                <li>Errors: |10 - 12| = 2, |20 - 18| = 2, |30 - 28| = 2</li>
-                <li>MAE = (2 + 2 + 2) / 3 = <span class="">2</span></li>
-            </ul>
-        </div>
-        <h3>Key Limitation:</h3>
-        <p>MAE does not show the <span class="">direction</span> of the error (over-prediction or under-prediction). It only measures the <span class="">size</span> of the error.</p>
-    <img src="Formula.jpg" alt="Formula">
-        <h2>19. Mean Squared Error (MSE)</h2>
-        <p><span class="">MSE</span> calculates the average of the squared differences between the actual values and the predicted values.</p>
-        <ul>
-            <li>Like MAE, it measures how far predictions are from the true values.</li>
-            <li>By squaring the errors, it gives more weight to larger errors, making them more impactful.</li>
-        </ul>
-
-        <div class="example">
-            <h3>Example Calculation:</h3>
-            <p>If the actual values are [10, 20, 30] and the predicted values are [12, 18, 28]:</p>
-            <ul>
-                <li>Errors: (10-12)² = 4, (20-18)² = 4, (30-28)² = 4</li>
-                <li>MSE = (4 + 4 + 4) / 3 = <span class="">4</span></li>
-            </ul>
-        </div>
-
-        <h3>Key Points:</h3>
-        <ul>
-            <li>MSE emphasizes large errors more than small ones due to squaring.</li>
-            <li>It helps the model focus on reducing large prediction mistakes.</li>
-            <li>Unlike MAE, MSE can penalize extreme predictions more heavily.</li>
-        </ul>
-        <img src="Formula 2.jpg" alt="Formula2">
-        <h2>20. Log Loss (Logarithmic Loss)</h2>
-        <p><span class="">Log Loss</span> evaluates how close the predicted probabilities are to the true class labels.</p>
-        <ul>
-            <li>Lower Log Loss indicates better performance, as the model’s probability estimates are closer to the actual class.</li>
-        </ul>
-
-        <h3>Why is Log Loss Used?</h3>
-        <ul>
-            <li>It is useful for models that output probabilities (like logistic regression or neural networks).</li>
-            <li>It penalizes confident but wrong predictions more heavily than less confident ones.</li>
-        </ul>
-
-        <h3>Key Points:</h3>
-        <ul>
-            <li><span class="">Log Loss</span> focuses on the confidence of predictions, not just accuracy.</li>
-            <li>It heavily penalizes predictions with high confidence that are wrong.</li>
-            <li>Useful for models that predict probabilities in <span class="">multi-class</span> and <span class="">binary classification</span> tasks.</li>
-        </ul>
-
-        <div class="example">
-            <h3>Example:</h3>
-            <p>A model predicting a probability of 0.99 for Class A when the true class is B will have a high Log Loss, because it was very confident but incorrect.</p>
-            <p>A model predicting 0.51 for Class A when the true class is B will have a lower Log Loss, because it was less confident in the wrong prediction.</p>
-        
-    </div>
-    <img src="Binary classification .jpg" alt="Binary classification">
-    
-        <h2>21. Confusion Matrix</h2>
-        <p>A <span class="">Confusion Matrix</span> is a table used to evaluate the performance of a classification model by comparing actual and predicted classifications.</p>
-        <p>It is especially useful for classification problems with two or more classes.</p>
-
-        <h3>Definitions:</h3>
-        <ul>
-            <li><span class="formula">True Positive (TP):</span> The model correctly predicts the positive class.</li>
-            <li><span class="">False Positive (FP) (Type I Error):</span> The model incorrectly predicts the positive class.</li>
-            <li><span class="">True Negative (TN):</span> The model correctly predicts the negative class.</li>
-            <li><span class="">False Negative (FN) (Type II Error):</span> The model incorrectly predicts the negative class.</li>
-        </ul>
-
-        <div class="example">
-            <h3>Example: Cancer Classification Problem</h3>
-            <p><span class="">P:</span> Person has cancer.  
-               <span class="">N:</span> Person does not have cancer.</p>
             
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Predicted Cancer</th>
-                    <th>Predicted No Cancer</th>
-                </tr>
-                <tr>
-                    <th>Actual Cancer</th>
-                    <td><span class="">50 (TP)</span></td>
-                    <td><span class="">10 (FN)</span></td>
-                </tr>
-                <tr>
-                    <th>Actual No Cancer</th>
-                    <td><span class="">5 (FP)</span></td>
-                    <td><span class="">100 (TN)</span></td>
-                </tr>
-            </table>
-        </div>
-        
-            <h2>22. Metrics Derived from Confusion Matrix</h2>
-            <p>The confusion matrix helps in evaluating classification models by providing insights into different performance metrics such as accuracy, precision, recall, and F1-score.</p>
-
-        
-                <h3>1. Accuracy:</h3>
-                <ul>
-                    <li>Proportion of correct predictions.</li>
-                </ul>
-        
-                <div class="formula">
-                    \[
-                    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
-                    \]
-                    <p>Example: \( \frac{86 + 10}{86 + 10 + 2 + 2} = 0.93 \) or 93%.</p>
-                </div>
-        
-                <h3>2. Precision:</h3>
-                <ul>
-                    <li>How many of the predicted positives are actually positive.</li>
-                </ul>
-        
-                <div class="formula">
-                    \[
-                    \text{Precision} = \frac{TP}{TP + FP}
-                    \]
-                    <p>Example: \( \frac{80}{80 + 8} = 0.91 \).</p>
-                </div>
-        
-                <h3>3. Recall (Sensitivity):</h3>
-                <ul>
-                    <li>How many actual positives are correctly predicted.</li>
-                </ul>
-        
-                <div class="formula">
-                    \[
-                    \text{Recall} = \frac{TP}{TP + FN}
-                    \]
-                    <p>Example: \( \frac{80}{80 + 17} = 0.83 \).</p>
-                </div>
-        
-                <h3>4. F1 Score:</h3>
-                <ul>
-                    <li>Harmonic mean of precision and recall.</li>
-                </ul>
-        
-                <div class="formula">
-                    \[
-                    F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-                    \]
-                </div>
-            </div>
-    </div>
-    <div class="container">
-        <h2>23. Why Use a Confusion Matrix?</h2>
-        <div class="content-box"></div>
-        <p><span class="">✔ Helps understand where the model is making mistakes:</span> Identifies false positives and false negatives.</p>
-
-            <p><span class="">✔ Useful for imbalanced datasets:</span> Shows performance in cases where one class significantly outweighs the other.</p>
-
-            <p><span class="">✔ Provides a foundation for other metrics:</span> Used to calculate accuracy, precision, recall, and F1-score.</p>
-
-    <img src="Predicted Class.jpg" alt="Predicted Class">
+        </ul>
+    </section>
+    <section id="ourteam" class="content-box">
+        <h2>Our Team</h2>
     
-        <h2>24. Classification Accuracy</h2>
-        <img src="Classification Accuracy.jpg" alt="Classification Accuracy">
-            <p><span class="">1.</span> Accuracy is a good measure when the target variable classes in the data are nearly balanced. Ex: 60% classes in our fruits image dataset are apples and 40% are oranges. A model that predicts whether a new image is an apple or an orange, with 97% accuracy, is a very good measure in this example.</p>
-        <div class="content-box">
-            <p><span class="">2.</span> Accuracy should NEVER be used as a measure when the target variable classes are highly imbalanced. </p>
-            <p><strong>Example:</strong> In a cancer detection example with 100 people, only 5 have cancer. If a very bad model predicts every case as "No Cancer," it will classify 95 non-cancer patients correctly and misclassify 5 cancer patients as non-cancerous. Even though the model is terrible at predicting cancer, its accuracy is still 95%.</p>
-  
-        <h2>25. Precision</h2>
-
-        <h3>Definition of Precision:</h3>
-        <p>Precision tells us what proportion of the people our model predicted as having cancer actually have cancer.</p>
-
-        <p>Mathematically, precision is defined as:</p>
-
-        <p>
-        \[
-        \text{Precision} = \frac{TP}{TP + FP}
-        \]
-        </p>
-
-        <h3>True Positive (TP) and False Positive (FP):</h3>
-        <ul>
-            <li><strong>True Positive (TP):</strong> Cases where the model correctly predicted "Cancer."</li>
-            <li><strong>False Positive (FP):</strong> Cases where the model predicted "Cancer," but the person does not actually have cancer.</li>
-        </ul>
-
-        <h3>Example Explanation:</h3>
-
-        <div class="content-box">
-            <p><strong>Scenario:</strong> There are 100 people. Out of these, only 5 people actually have cancer.</p>
-
-            <p><strong>Model Performance:</strong> Our model predicts every single person as having cancer (very bad model).</p>
-
-            <ul>
-                <li><strong>TP:</strong> 5 (All 5 people with cancer were correctly predicted as "Cancer").</li>
-                <li><strong>FP:</strong> 95 (The model predicted "Cancer" for 95 people who do not have cancer).</li>
-            </ul>
-
-            <p>Thus, the precision of this model is:</p>
-
-            <p>
-            \[
-            \text{Precision} = \frac{5}{5 + 95} = \frac{5}{100} = 0.05 \, (5\%)
-            \]
-            </p>
-
-            <p>This means that only 5% of the people predicted as having cancer actually have cancer, making this model unreliable.</p>
+    <div class="team-container">
+        <div class="team-member">
+            <img src="my image 2.jpg" alt="Mr.Arafat Ali Mondal">
+            <h3><a href="https://www.researchgate.net/profile/Arafat-Mondal?ev=hdr_xprf" target="_blank">Mr.Arafat Ali Mondal</a></h3>
+            <p class="position">Research Intern</p>
+            <p>ML in healthcare, Medical Image Computing, Human-Robot Interaction, Medical image analysis</p>
         </div>
-    </div>
-   
-        <h3> Precision vs. Recall</h3>
-        <ul>
-            <li><span class=""> Precision (as calculated earlier):</span> The model’s Precision is 5% because it predicted cancer for everyone, leading to a lot of false positives.</li>
-            <li><span class="">Recall:</span> Recall is high (100%) because the model caught all actual cancer cases, even though it was overly cautious.</li>
-      
-   
-        <h2>26. Key Points</h2>
-        <ul>
-            <li><span class="">Precision</span> focuses on the accuracy of predictions made as positive. <br>
-            <i>Example:</i> Did the model get the "Cancer" predictions right?</li>
-            
-            <li><span class="">Recall</span> focuses on identifying all actual positive cases. <br>
-            <i>Example:</i> Did the model find everyone who actually had cancer?</li>
 
-            <li>A good model strikes a balance between <span class="">Precision</span> and <span class="">Recall</span>, avoiding too many false positives or false negatives.</li>
-         
-        <h2>27. F1 Score</h2>
-        <p><span class="">Definition:</span> The F1 Score is the harmonic mean of Precision and Recall, balancing both into a single performance measure. It ranges from 0 to 1, where 1 indicates perfect precision and recall.</p>
+        <div class="team-member">
+            <img src="Nabarun .jpg">
+            <h3><a href="https://g.co/kgs/9DHS9hb" target="_blank">Dr. Nabarun Bhattacharyya</a></h3>
+            <!-- <h3>Prof. Nabarun Bhattacharyya</h3> -->
+            <p class="position">Senior Research Scientist</p>
+            <p>IoT, Sensors, AI and ML, Analytics</p>
+        </div>
+
+        <div class="team-member">
+            <img src="sayani maaa.jpg" alt="Dr.Sayani Mondal">
+            <h3><a href="https://nitsikkim.ac.in/cse/profile.php?sn=790" target="_blank">Dr. Sayani Mondal</a></h3>
+            <p class="position">Assistant Professor, Sister Nivedita University</p>
+            <p>Human Computer Interaction, Software Engineering, ML in Healthcare</p>
+        </div>
+        <div class="team-member">
+            <img src="selim dada.jpg" alt="Dr.Selim Reja">
+            <h3><a href="https://sites.google.com/view/selimreja/home?authuser=0" target="_blank">Dr. Selim Reja</a></h3>
+            <p class="position">Senior Research Fellow, Indian Statistical Institute, Kolkata</p>
+            <p>Disease Modeling, Epidemiology, Stochasticity, Nonlinear Dynamics</p>
+        </div>
+
+        <div class="team-member">
+            <img src="images/shatadal.jpg" alt="Mr. Shatadal Ghosh">
+            <h3><a href="https://www.linkedin.com/in/shatadal-ghosh-5abaa256/?originalSubdomain=inf" target="_blank">Mr. Shatadal Ghosh</a></h3>
+            <p class="position">Scientific Officer Head (IT Dept.), NCSM</p>
+            <p>AI & ML, IoT in Museum Displays, Sensors Technology</p>
+        </div>
+
+        <div class="team-member">
+            <img src="citations.jpeg" alt="Mr. Shyamal Roy">
+            <h3><a href="https://gnit.irins.org/profile/201343" target="_blank">Mr. Shyamal Royl</a></h3>
+            <p class="position">Assistant Professor, Guru Nanak Institute of Technology</p>
+            <p>Power Electronics, Real-Time Energy Management, Sensors Technology</p>
+        </div>
         
-        <h3>Formula:</h3>
-        <div class="formula">
-            F1 Score = 2 × (Precision × Recall) / (Precision + Recall)
+        <div class="team-member">
+            <img src="naim.jpg" alt="Naim Aktar">
+            <h3>Mr. Naim Aktar</h3>
+            <p class="position">B.Sc(Honours), Calcutta University and  M.Sc Under Burdwan University</p>
+            <p>CalculuS, Topology</p>
         </div>
-
-        <h3>When to Use F1 Score:</h3>
+        
+    <!-- <section id="people" class="content-box">
+        <h2>People</h2>
         <ul>
-            <li>When you need a balance between <span class="">Precision</span> and <span class="">Recall</span>.</li>
-            <li>When the cost of <span class="">False Positives</span> and <span class="">False Negatives</span> is similar.</li>
-            <li>Useful in imbalanced datasets, where one class significantly outnumbers the other.</li>
-        </ul>
+            <li>Arafat Ali Mondal – AI Researcher</li>
+            <li>Dr. Sayani Mondal – AI & ML Healthcare Researcher</li>
+        </ul> -->
+    </section>
+    <!-- <section id="ml" class="content-box">
+        <h2 class="fade-in" li><a href="ml.html" target="_blank">simple way to learn ML</a></li> </h2>
+        <h4 class="typing"> AI for Everyone: Master Machine Learning Today !!!!!</h4>
+        <div id="blog-container"></div>  -->
+        <!-- Blogs will appear here -->
 
-        <h3>Key Properties:</h3>
-        <ul>
-            <li><span class="">High Precision + Low Recall:</span>
-                <ul>
-                    <li>The model is very accurate in its positive predictions but misses many actual positive cases.</li>
-                    <li><i>Example:</i> A cancer detection model that diagnoses very few cases as "cancer" but is correct every time it does.</li>
-                </ul>
-            </li>
-            <li><span class="">Low Precision + High Recall:</span>
-                <ul>
-                    <li>The model catches most of the positive cases but also predicts many false positives.</li>
-                    <li><i>Example:</i> A cancer detection model that predicts almost everyone as "cancer" to avoid missing any actual cases.</li>
-                </ul>
-            </li>
-        </ul>
 
-        <h3>F Variants:</h3>
-        <ul>
-            <li><span class="">F2 Score:</span>
-                <ul>
-                    <li>Gives more weight to <span class="">Recall</span> than <span class="">Precision</span>.</li>
-                    <li>Useful when missing actual positives (False Negatives) is more critical.</li>
-                    <li><i>Example:</i> Diagnosing a deadly disease where missing cases has serious consequences.</li>
-                </ul>
-            </li>
-            <li><span class="">F0.5 Score:</span>
-                <ul>
-                    <li>Gives more weight to <span class="">Precision</span> than <span class="">Recall</span>.</li>
-                    <li>Useful when False Positives are more critical.</li>
-                    <li><i>Example:</i> Spam email detection, where incorrectly flagging important emails as spam is a bigger problem.</li>
-                </ul>
-            </li>
-        </ul>
-
-        <h3>Interpretation:</h3>
-        <p>The F1 Score provides a single measure to evaluate a model's effectiveness by balancing how precise and comprehensive it is. The higher the F1 Score, the better the model performs.</p>
-   
-        <h2>28. Receiver Operating Characteristic (ROC) Curve</h2>
-        <p><span class="">Definition:</span> The Receiver Operating Characteristic (ROC) curve is a graphical plot that illustrates the performance of a binary classifier system as its discrimination threshold is varied.</p>
-
-        <h3>How ROC Curve Works:</h3>
-        <ul>
-            <li>It is created by plotting the True Positive Rate (TPR) vs. False Positive Rate (FPR) at different threshold values.</li>
-            <li>The True Positive Rate (TPR) is also called Sensitivity and represents the fraction of actual positives correctly identified.</li>
-            <li>The False Positive Rate (FPR) is 1 - Specificity, representing the fraction of negatives incorrectly classified as positive.</li>
-        </ul>
-
-        <h3>Formula:</h3>
-        <div class="formula">
-            True Positive Rate (TPR) = TP / (TP + FN) <br>
-            False Positive Rate (FPR) = FP / (FP + TN)
-        </div>
-
-        <h3>Key Points:</h3>
-        <ul>
-            <li>The ROC curve helps in evaluating a model's ability to distinguish between positive and negative classes.</li>
-            <li>A model with a perfect classification has a ROC curve that reaches the top-left corner (TPR = 1, FPR = 0).</li>
-            <li>The Area Under the ROC Curve (AUC-ROC)is used as a measure of the classifier's performance.</li>
-        </ul>
-
-        <h3>Interpretation:</h3>
-        <ul>
-            <li>If AUC = 1, the model is perfect at distinguishing between classes.</li>
-            <li>If AUC = 0.5, the model has no discriminative power (random guessing).</li>
-            <li>The closer the curve follows the left-hand border and then the top border, the better the performance.</li>
-        </ul>
+        <!-- <section id="My research works" class="content-box">
+            <section id="project-help" class="content-box">
+                <h2 class="fade-in">
+                    <a href="My research works.html" target="_blank"> My research works</a>
+                </h2>
+                <h4 class="typing">My All Research works </h4>
+                <div id="blog-container"></div> -->
     
-            <h2>True Positive Rate (Sensitivity)</h2>
-            <p>True Positive Rate corresponds to the proportion of positive data points that are correctly considered as positive, with respect to all positive data points.</p>
-            
-            <div class="formula">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <mstyle displaystyle="true">
-                        <mrow>
-                            <mi>TruePositiveRate</mi>
-                            <mo>=</mo>
-                            <mfrac>
-                                <mrow>
-                                    <mi>True Positive</mi>
-                                </mrow>
-                                <mrow>
-                                    <mi>True Positive</mi>
-                                    <mo>+</mo>
-                                    <mi>False Negative</mi>
-                                </mrow>
-                            </mfrac>
-                        </mrow>
-                    </mstyle>
-                </math>
-          
-    <script>
     
-    function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDarkMode);
-        }
+    <!-- <section id="On Going Projects" class="content-box">
+                <h2>On Going Projects</h2>
+                <ul>
+                    <li>Medical Image Computing</li>
+                    <li>Data Science in Medicine</li>
+                    <li>Artificial Intelligence in Medicine</li>
+                    <li>Human-Robot Interaction</li>
+                    <li>Soft Robotics</li> -->
 
-        // Load dark mode preference on page load
-        window.onload = () => {
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
-            }
-        };
-    </script>
-   
-        <h2>29. False Positive Rate (FPR)</h2>
-        <p>False Positive Rate corresponds to the proportion of negative data points that are mistakenly considered as positive, with respect to all negative data points.</p>
-        
-        <div class="formula">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <mstyle displaystyle="true">
-                    <mrow>
-                        <mi>FalsePositiveRate</mi>
-                        <mo>=</mo>
-                        <mfrac>
-                            <mrow>
-                                <mi>False Positive</mi>
-                            </mrow>
-                            <mrow>
-                                <mi>False Positive</mi>
-                                <mo>+</mo>
-                                <mi>True Negative</mi>
-                            </mrow>
-                        </mfrac>
-                    </mrow>
-                </mstyle>
-            </math>
-        
-
-        <p>This function requires the true binary value and the target scores, which can either be probability estimates of the positive class, confidence values, or binary decisions. False Positive Rate and True Positive Rate both have values in the range [0, 1]. FPR and TPR are computed at threshold values such as (0.00, 0.02, 0.04, ..., 1.00) and a graph is drawn.</p>
-
-        <div class="image-container">
-            <img src="False Positive Rate.jpg" alt="False Positive Rate">
             
-        </div>
-
-        <p>Lowering the classification threshold classifies more items as positive, thus increasing both False Positives and True Positives. To compute the points in an ROC curve, we could evaluate a logistic regression model many times with different classification thresholds.</p>
-
-    </div>
-   
-    <h2>30.Area under the ROC Curve (AUC)</h2>
-    <ol>
-        <li>
-    <p>
-        The <strong>Area under the ROC Curve (AUC)</strong> is the measure of an entire two-dimensional area underneath the entire ROC curve (think integral calculus) from (0,0) to (1,1). AUC provides an aggregate measure of performance across all possible classification thresholds. AUC ranges in value from 0 to 1. A model whose predictions are 100% wrong has an AUC of 0.0; one whose predictions are 100% correct has an AUC of 1.0.
-    </p>
-    <p>
-        One way of interpreting AUC is as the probability that the model ranks a random positive example more highly than a random negative example. For example, given the following examples, which are arranged from left to right in ascending order of logistic regression predictions; AUC represents the probability that a random positive (green) example is positioned to the right of a random negative (red).
-    </p>
-    <img src="Array.jpg" alt="">
-        </pre>
-    </div>
-    <p>
-    </p>
-
-    <h2>Properties of AUC</h2>
-    <ol>
-        <li>
-            <strong>AUC is scale-invariant.</strong> It measures how well predictions are ranked, rather than their absolute values.
-        </li>
-        <li>
-            <strong>AUC is classification-threshold-invariant.</strong> It measures the quality of the model’s predictions irrespective of what classification threshold is chosen.
-        </li>
-        <li>
-            <strong>Scale invariance is not always desirable.</strong> For example, sometimes we really do need well-calibrated probability outputs, and AUC won’t tell us about that.
-        </li>
-        <li>
-            <strong>Classification-threshold invariance is not always desirable.</strong> In cases where there are wide disparities in the cost of false negatives vs. false positives, it may be critical to minimize one type of classification error. AUC isn’t a useful metric for this type of optimization.
-        </li>
-    </ol>
-</body>
-
-    <h1>31. Underfitting and Overfitting</h1>
-
-    <h2>Introduction</h2>
-    <p>
-        In machine learning, learning a target function from training data is called 
-        <strong>inductive learning</strong>. This means learning general rules from specific examples, which is the goal of 
-        supervised learning. This is different from <strong>deductive learning</strong>, which starts with 
-        general rules to learn specific examples.
-    </p>
-    <p>
-        <strong>Generalization</strong> refers to how well a model can apply what it has learned to new, unseen data. 
-        A good machine learning model should generalize well so it can make accurate predictions on data 
-        it hasn’t seen before.
-    </p>
-
-    <div class="highlight">
-        <h2>Overfitting</h2>
-        <p>
-            Overfitting happens when a model learns the training data too well, including its 
-            mistakes and random noise. This makes the model perform poorly on new data 
-            because it tries to apply those irrelevant details. Overfitting is more likely with 
-            flexible models that can learn complicated patterns.
-        </p>
-        <p><strong>Key Characteristics:</strong></p>
-        <ul>
-            <li>Very accurate with training data (low bias).</li>
-            <li>Poor performance on new data (high variance).</li>
-            <li>Occurs when the model is too complex for the problem.</li>
-        </ul>
-        <p>To prevent overfitting, we can try different models and check which one performs best on test data.</p>
-    </div>
-
-    <div class="highlight">
-        <h2>Underfitting</h2>
-        <p>
-            Underfitting occurs when a model is too simple to understand the training 
-            data. This means it doesn’t perform well on either the training data or 
-            new data. It’s easy to spot because the model’s results will be poor.
-        </p>
-        <p><strong>Key Characteristics:</strong></p>
-        <ul>
-            <li>Cannot capture important trends in data.</li>
-            <li>Makes oversimplified guesses (high bias).</li>
-            <li>Does not change much with different data (low variance).</li>
-            <li>Occurs when the model is too basic for the problem.</li>
-        </ul>
-    </div>
-
-    <div class="warning">
-        <h2>Example</h2>
-        <p>
-            This example demonstrates the problems of underfitting and overfitting and how we 
-            can use linear regression with polynomial features to approximate nonlinear 
-            functions. 
-        </p>
-        <p>
-            The plot below shows the function we want to approximate, which is a part of the cosine function. 
-            In addition, the samples from the real function and the approximations of different models are displayed. 
-            The models have polynomial features of different degrees:
-        </p>
-        <ul>
-            <li>A linear function (polynomial with degree 1) is too simple to fit the training samples, leading to underfitting.</li>
-            <li>A polynomial of degree 4 approximates the true function almost perfectly.</li>
-            <li>For higher degrees, the model overfits the training data, learning the noise instead of the real pattern.</li>
-        </ul>
-        <p>
-            We evaluate overfitting/underfitting using <strong>cross-validation</strong>. We calculate the mean squared error (MSE) 
-            on the validation set; the higher the MSE, the less likely the model generalizes correctly from the training data.
-        </p>
-    </div>
-        <img src="Underfitting and Overfitting .jpg" alt="Underfitting and Overfitting">
-
-    <h1>32. Model Performance</h1>
-    <p>
-        When training machine learning (ML) models, it’s important to avoid <strong>overfitting</strong>. This happens when the model learns details and noise from the training data, making it perform poorly on unseen data.
-    </p>
-    <p>
-        A key factor in controlling overfitting is the <strong>number of epochs</strong>—how many complete passes the model makes through the training data.
-    </p>
-    <ul>
-        <li>
-            <strong>Too many epochs:</strong> The model may be overfit by learning the noise instead of just the patterns.
-        </li>
-        <li>
-            <strong>Too few epochs:</strong> The model might not learn enough from the training data.
-        </li>
-    </ul>
-
-    <h2>Underfitting</h2>
-    <p>
-        Both training and validation accuracy are low. This means the model is too simple and hasn’t learned enough. Possible solutions:
-    </p>
-    <ul>
-        <li>Increase the complexity of the model (e.g., add more layers or units).</li>
-        <li>Train for more epochs.</li>
-    </ul>
-
-    <h2>Overfitting</h2>
-    <p>
-        High training accuracy but low validation accuracy. This means the model is too specialized in the training data. Possible solutions:
-    </p>
-    <ul>
-        <li>Use regularization techniques (e.g., dropout, weight decay).</li>
-        <li>Reduce the number of epochs.</li>
-        <li>Add more training data if possible.</li>
-    </ul>
-
-    <div class="important-terms">
-        <h2>Important Terms</h2>
-        <ul>
-            <li>
-                <strong>Training Data:</strong> The data used to teach the model how to map inputs to outputs.
-            </li>
-            <li>
-                <strong>Training Accuracy:</strong> How well the model predicts the outputs for the training data. It measures how much the model has "learned."
-            </li>
-            <li>
-                <strong>Validation Data:</strong> Separate data used to check how well the model is performing during training. It helps ensure the model generalizes to new data.
-            </li>
-            <li>
-                <strong>Validation Accuracy:</strong> Indicates how well the model generalizes. It is calculated during training and reflects the model’s performance on unseen data.
-                <ul>
-                    <li>If validation accuracy decreases, the model may be overfitting the training data.</li>
-                </ul>
-            </li>
-            <li>
-                <strong>Test Data:</strong> Data not seen during training or validation. Used to evaluate the final performance of the model.
-            </li>
-            <li>
-                <strong>Test Accuracy:</strong> Measures the model’s ability to generalize to completely new data. This is calculated after training is complete.
-            </li>
-        </ul>
-        <img src="Model Complexity .jpg" alt="Model Complexity">
-    </div>
-    <h2>33. Data Splitting</h2>
-    <p>When building a machine learning model, it’s crucial to ensure that it works well not just on the data it was trained on but also on new, unseen data.</p>
-
-    <ul>
-        <li><span class="blue">Training Set:</span> The part of the data the model learns from. It’s used to teach the model how to map inputs to outputs.</li>
-        <li><span class="green">Development (Dev) Set (or Cross-Validation/Hold-Out Set):</span> A separate set of data used during training to check how well the model is performing. It helps guide decisions like adjusting hyperparameters or choosing the best model.</li>
-        <li><span class="red">Test Set:</span> A completely separate set of data used at the very end to evaluate the model's final performance on unseen data. It simulates real-world conditions.</li>
-    </ul>
-
-    <h3>Why is Data Splitting Important?</h3>
-    <ul>
-        <li><span class="">Prevent Overfitting:</span> By evaluating on the dev and test sets, you can detect if the model is learning too much from the training data (overfitting) and not generalizing well.</li>
-        <li><span class="">Reflect Real Conditions:</span> The dev and test sets should mimic the type of data the model will encounter in the future.</li>
-        <li><span class="">Improve Confidence:</span> Splitting the data ensures that the model’s performance is measured reliably. Both the dev and test sets should be large enough to give accurate results.</li>
-    </ul>
-
-    <h3>Additional Considerations</h3>
-    <ul>
-        <li><span class="">Same Distribution:</span> The dev and test sets must come from the same data distribution as the training set. This ensures the results accurately reflect the model’s performance in real-world scenarios.</li>
-        <li><span class="">Evaluation During Training:</span> Use the dev set to monitor progress and decide how to improve the model.</li>
-        <li><span class="">Final Assessment:</span> Use the test set only once, at the end of training, to get a true measure of how well the model performs on unseen data.</li>
-    </ul>
-    <img src="Data Splitting .JPG" alt="Data Splitting">
-</body>
-    <h1>34. Cost Function</h1>
-    <p>
-        A cost function is used to measure how close the predicted values are to their corresponding real values. The function can be minimized or maximized, depending on the situation or problem.
-    </p>
-    <div class="highlight">
-        <h2>Example: Ordinary Least Squares (OLS)</h2>
-        <p>
-            In the case of Ordinary Least Squares (OLS), the cost function (to be minimized) is:
-            \[
-            J(\theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_{\theta}(x_i) - y_i)^2
-            \]
-            Where:
-            <ul>
-                <li>\( J \) denotes the cost function,</li>
-                <li>\( m \) is the number of observations in the dataset,</li>
-                <li>\( h_{\theta}(x_i) \) is the predicted value of the response,</li>
-                <li>\( y_i \) is the true value of the response.</li>
-            </ul>
-        </p>
-</div>
-    <h1>35. Validation in Machine Learning</h1>
-    <p>
-        When building a machine learning model, we want to ensure the model works well, but we don't want to repeatedly test it for the following reasons:
-    </p>
-    <div class="warning">
-        <ul>
-            <li>
-                <strong>In Real Applications:</strong> Poor testing can lead to serious consequences (e.g., in diagnosing diseases like cancer).
-            </li>
-            <li>
-                <strong>Risk of Overfitting:</strong> Repeated testing can lead to tailoring the model too much to the test set.
-            </li>
-            <li>
-                <strong>Data Limitations:</strong> Using extra data for testing means less data for training.
-            </li>
-        </ul>
-    </div>
-    <div class="highlight">
-        <h2>Solution: Validation Set</h2>
-        <p>
-            To address these issues, we use a <strong>validation set</strong> as a "pre-test" to fine-tune the model before testing. However, using a separate validation set also has its challenges:
-        </p>
-        <ul>
-            <li>It reduces the amount of data available for training.</li>
-            <li>There is a risk of overfitting to the validation set.</li>
-        </ul>
-        div class="example">
-            <h2>Example: k-Fold Cross-Validation</h2>
-            <p>
-                Suppose we have a dataset of 100 samples and \( k = 5 \):
-            </p>
-            <ol>
-                <li>Split the data into 5 folds of 20 samples each.</li>
-                <li>Train on 80 samples (4 folds) and validate on the remaining 20 (1 fold).</li>
-                <li>Repeat this 5 times, each time changing the fold used for validation.</li>
-                <li>Calculate the average accuracy across all 5 runs.</li>
-            </ol>
-<img src="Validation.jpg" alt="Validation">
-</body>
-    <h1>36. High Bias and High Variance in Machine Learning</h1>
-    <div class="section">
-        <p>
-            When a model doesn’t perform well, the first step is to figure out why it’s underperforming. There are two main issues that could be causing problems: <strong>high bias</strong> or <strong>high variance</strong>. These issues can be identified by looking at the training error and test error.
-        </p>
-        <img src="Training instances .jpg" alt="Training instances">
-    </div>
-
-    <div class="section">
-        <h2>High Variance</h2>
-        <p>
-            In the first regime, the cause of the poor performance is <strong>high variance</strong>.
-        </p>
-        <div class="highlight">
-            <h3>Symptoms</h3>
-            <ul>
-                <li>Training error is much lower than test error.</li>
-                <li>Training error is lower than \( \epsilon \).</li>
-                <li>Test error is above \( \epsilon \).</li>
-            </ul>
-        </div>
-        <div class="highlight">
-            <h3>Remedies</h3>
-            <ul>
-                <li>Add more training data.</li>
-                <li>Reduce model complexity – complex models are prone to high variance.</li>
-                <li>Use bagging (will be covered later in the course).</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>High Bias</h2>
-        <p>
-            Unlike the first regime, the second regime indicates <strong>high bias</strong>: the model being used is not robust enough to produce an accurate prediction.
-        </p>
-        <div class="highlight">
-            <h3>Symptoms</h3>
-            <ul>
-                <li>Training error is higher than \( \epsilon \).</li>
-            </ul>
-        </div>
-        <div class="highlight">
-            <h3>Remedies</h3>
-            <ul>
-                <li>Use a more complex model (e.g., kernelize, use non-linear models).</li>
-                <li>Add more features.</li>
-                <li>Use boosting.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Regularization</h2>
-        <p>
-            One of the first methods we should try when we need to reduce overfitting is <strong>regularization</strong>.
-        </p>
-        <div class="highlight">
-            <p>
-                Regularization involves adding an extra element to the loss function, which punishes our model for being too complex or, in simple words, for using too high values in the weight matrix. This way, we try to limit its flexibility but also encourage it to build solutions based on multiple features. Two popular versions of this method are:
-            </p>
-            <ul>
-                <li><strong>L1 Regularization (Lasso)</strong></li>
-                <li><strong>L2 Regularization (Ridge)</strong></li>
-            </ul>
-            <img src="Sweet spot.jpg" alt="Sweet spot">
-        </div>
-    </div>
-    <img src="qq.jpg" alt="qq">
-        <h1>37. Gradient Descent</h1>
-        <div class="section">
-            <p>
-                <strong>Gradient Descent</strong> is an algorithm used to train machine learning models by adjusting their parameters (like weights) to minimize a specific function called the <strong>cost function</strong>. The goal is to find the parameter values that make the cost function as small as possible.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>Why Use Gradient Descent?</h2>
-            <ul>
-                <li>Efficiently finds the best parameters for complex models with many variables.</li>
-                <li>Works well for high-dimensional problems where other optimization methods may fail.</li>
-                <li>Used in almost all machine learning algorithms, including linear regression, logistic regression, and neural networks.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Key Terms</h2>
-            <div class="highlight">
-                <ul>
-                    <li><strong>Cost Function:</strong> Measures how far the model’s predictions are from the actual values.</li>
-                    <li><strong>Gradient:</strong> The derivative of the cost function, indicating the slope of the function.</li>
-                    <li><strong>Learning Rate:</strong> A small number that controls how much to adjust the parameters in each step. If it's too large, the algorithm might overshoot the minimum; if it's too small, convergence will be slow.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>How Gradient Descent Works</h2>
-            <ol>
-                <li>
-                    <strong>Initial Guess:</strong>
-                    <p>Start with some initial random values for the model’s parameters (e.g., weights in a neural network).</p>
-                </li>
-                <li>
-                    <strong>Compute Gradient:</strong>
-                    <p>The algorithm calculates the gradient (slope) of the cost function with respect to the parameters. This tells us the direction of steepest ascent or descent.</p>
-                </li>
-                <li>
-                    <strong>Move in the Opposite Direction:</strong>
-                    <p>Since we want to minimize the cost function, the parameters are adjusted in the direction opposite to the gradient. This step is controlled by a factor called the learning rate.</p>
-                </li>
-                <li>
-                    <strong>Repeat:</strong>
-                    <p>This process is repeated iteratively, adjusting the parameters a little at a time, until the cost function reaches its lowest point (local minimum).</p>
-                </li>
-            </ol>
-        </div>
-
-        <div class="section">
-            <h2>38. Gradient</h2>
-            <p>
-                A <strong>gradient</strong> shows how much the output of a function changes when you make small changes to its inputs. It tells us the direction and rate of the steepest increase or decrease of the function.
-            </p>
-            <div class="highlight">
-                <h3>Intuition</h3>
-                <p>
-                    Imagine you're hiking down a hill to reach the lowest point (the minimum error). The gradient tells you the steepest direction downhill. You take steps in this direction to get closer to the bottom with each move.
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>My Research Works</title>
+                <link rel="stylesheet" href="styles.css"> <!-- External CSS for styling -->
+                <script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
+            </head>
+            <body>
+            
+            <!-- 🔍 Research Works Section -->
+            
+                    <section id="On Going Projects" class="content-box">
+                        <h2 class="fade-in">
+                            
+                                <img src="https://cdn-icons-png.flaticon.com/512/2702/2702069.png" alt="Research Icon" class="research-icon"> My Research Works
+                            </a>
+                            <h4 class="">📜 A Collection of My Research Contributions</h4>
+                            
+                        </h2>
+                    </p>
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                        <a href="My research works.html" target="_blank" style="background: #f7e70a; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+                            View Works →
+                        </a>
+                    </div>
+                    </section>
+                    
+                    <style>
+                        .research-icon {
+                            width: 24px;
+                            height: 24px;
+                            vertical-align: middle;
+                            margin-right: 8px;
+                        }
+                    </style>
+                </h2>
+                
+           <!-- ----------- on going prject ----------- -->
+                <!-- <section id="On Going Projects" class="content-box">
+                    <h2 class="fade-in">
+                        <a href="On going project.html" target="_blank"> <h2> Our on Going Projects</h2>
+                    </h2></i>
+                    </a>
+                <h4>🧠 A Collection of My All on Going Projects 🤖 </h4>
+                    </ul>
+                </section>
+            </section> -->
+            <section id="My research works" class="content-box" style="text-align: center; padding: 20px;">
+                <h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" 
+                         alt="Project Logo" 
+                         style="width: 50px; height: auto; margin-right: 15px;">
+                    <!-- <a href="" target="_blank" style="text-decoration: none; color: inherit;"> -->
+                        We are Working
+                    </a>
+                </h2>
+                <p style="font-size: 18px; color: #555; margin-top: 10px;">
+                    🚀 Exploring Cutting-Edge Innovations & AI Technology 🤖
                 </p>
-            </div>
-            <div class="highlight">
-                <h3>Why Gradients Matter in Machine Learning</h3>
-                <ul>
-                    <li>Gradients are essential in Gradient Descent, where they guide the model in updating weights in the right direction to minimize error.</li>
-                    <li>A higher gradient allows for faster learning, while a zero gradient means the model has stopped improving (it might have reached a minimum or a flat area).</li>
-                </ul>
-            </div>
-        </div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <a href="On going project.html" target="_blank" style="background: #007BFF; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+                        View Projects →
+                    </a>
+                </div>
+            </section>
+            
 
-        <div class="section">
-            <h2>Key Points</h2>
-            <ul>
-                <li>
-                    <strong>What It Does:</strong>
-                    <ul>
-                        <li>Measures the change in error (or loss) when we adjust the weights slightly in a machine learning model.</li>
-                        <li>Helps decide how to update the model's parameters to minimize errors.</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Think of It as a Slope:</strong>
-                    <ul>
-                        <li>If the slope (gradient) is steep, the function changes a lot with small changes to the inputs.</li>
-                        <li>If the gradient is zero, the function is flat, meaning no more learning can happen.</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Mathematical Definition:</strong>
-                    <ul>
-                        <li>A gradient is the partial derivative of a function concerning its inputs. It provides information on how to adjust each input to reduce the output (error).</li>
-                    </ul>
-                </li>
-            </ul>
+            <!-- 🎯 ML Learning Section -->
+            <!-- <section id="ml" class="content-box">
+                <h2 class="fade-in">
+                    <a href="ml.html" target="_blank">
+                        <i class="fas fa-brain"></i> What is  ML
+                    </a>
+                </h2>
+                <h4 class="typing">🚀 ML is very simple when you think of it this way!</h4>
+    
+            <div class="disclaimer">
+            <p><strong style="color: red;">Disclaimer:</strong> 
+            The content on this website is provided for informational and educational purposes only. While we strive for accuracy, 
+            it may contain errors, inaccuracies, or omissions. Please verify any information with reliable sources before using or 
+            relying on it. We are not responsible for any misunderstandings, misinterpretations, or consequences resulting from 
+            the use of this content. However, the materials shared here may help enhance your understanding of Machine Learning 
+            and related topics. Your use of this website is at your own risk.</p>
+        <section id="project-help" class="content-box">
+            <h2 class="fade-in">
+                <a href="dl.html" target="_blank">ML Quiz</a>
+            </h2>
+            <h4 class="Jan"> Fun with ML!!!!!</h4>
+            <div id="blog-container"></div> -->
+
+
+            <section id="ml" class="content-box" style="text-align: center; padding: 20px;">
+                <h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+                    
+                    <i class="fas fa-brain"></i> What is ML
+                </h2>
+                <h4 class="">🚀 ML is very simple when you think of it this way!</h4>
+            
+                <div class="disclaimer">
+                    <p>
+                        <strong style="color: red;">Disclaimer:</strong> 
+                        The content on this website is provided for informational and educational purposes only. While we strive for accuracy, 
+                        it may contain errors, inaccuracies, or omissions. Please verify any information with reliable sources before using or 
+                        relying on it. We are not responsible for any misunderstandings, misinterpretations, or consequences resulting from 
+                        the use of this content. However, the materials shared here may help enhance your understanding of Machine Learning 
+                        and related topics. Your use of this website is at your own risk.
+                    </p>
+                </div>
+            
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <a href="ml.html" target="_blank" style="background: #ff00d4; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+                        Machine Learning Key Note →
+                    </a>
+                </div>
+            </section>
+            
+            <section id="project-help" class="content-box" style="text-align: center; padding: 20px;">
+                <h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" 
+                         alt="ML Quiz Logo" 
+                         style="width: 50px; height: auto; margin-right: 15px;">
+                    <a href="dl.html" target="_blank" style="text-decoration: none; color: inherit;">ML Quiz</a>
+                </h2>
+                <h4 class="Jan">🎉 Fun with ML!!!!!</h4>
+                <div id="blog-container"></div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <a href="dl.html" target="_blank" style="background: #28a745; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+                        Take Quiz →
+                    </a>
+                </div>
+            </section>
+            
+            <style>
+                .read-more {
+                    display: inline-block;
+                    margin-top: 10px;
+                    padding: 10px 20px;
+                    background-color: #007BFF;
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    transition: background-color 0.3s ease;
+                }
+                
+                .read-more:hover {
+                    background-color: #0056b3;
+                }
+            </style>
+            
+           <!-- ------------------ DL model----------- -->
+    <section id="DL" class="content-box" style="text-align: center; padding: 20px;">
+        <h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/4249/4249884.png" 
+                 alt="DL Logo" 
+                 style="width: 50px; height: auto; margin-right: 15px;">
+            <a  target="_blank" style="text-decoration: none; color: inherit;">What is DL</a>
+        </h2>
+        <h4 class="">🧠 DL is very simple when you think of it this way!!!!!!</h4>
+        <div id="blog-container"></div>
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <a href="Deep Learning.html" target="_blank" style="background: #ff5722; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+                Learn DL →
+            </a>
         </div>
-    </div>
+    </section>
+
+
+</div>
+    </section>
+
+    </section>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
 </body>
 </html>
 
-<h2>39. Cost Function</h2>
-<p>It is a way to determine how well the machine learning model has performed given the different values of each parameter.
-   In the linear regression model, the parameters will be the two coefficients, <b>\(\beta\)</b> and <b>m</b>:</p>
+<script>
+    function showEmail() {
+        document.getElementById("email-container").innerHTML = '<a href="mailto:arafatpersonal2025@gmail.com">arafatpersonal2025@gmail.com</a>';
+    }
+</script>
 
-<p class="math">\( y = \beta + mx_1 \)</p>
+<!-- Add Google reCAPTCHA Script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<p>The cost function will be the sum of least squares. Since the cost function is a function of the parameters \( \beta \) and \( m \),
-   we can plot out the cost function with each value of the coefficients. Given the value of each coefficient, we can refer to the cost function 
-   to know how well the machine learning model has performed.</p>
 
-<div class="image-container">
-    <p><b>Cost Function</b></p>
-    <img src="Cost function .jpg" alt="Cost Function Graph">
-</div>
-
-<ul>
-    <li>During the training phase, we are focused on selecting the ‘best’ value for the parameters (i.e. the coefficients), while \( x \)'s remain the same throughout the training phase.</li>
-    <li>For the case of linear regression, we find the value of the coefficients that will reduce the cost to the minimum, a.k.a the lowest point in the mountainous region.</li>
-</ul>
-
-</body>
-<h2>40. Method</h2>
-    <p>The Cost function will take in a (<b>m</b>, <b>b</b>) pair and return an error value based on how well the line fits our data. 
-       To compute this error for a given line, we’ll iterate through each (<b>x</b>, <b>y</b>) point in our data set and sum the square distances 
-       between each point’s <b>y</b> value and the candidate line’s <b>y</b> value <i>(computed at mx + b)</i>. 
-       It’s conventional to square this distance to ensure that it is positive and to make our error function differentiable.</p>
-
-    <ul>
-        <li>Lines that fit our data better (where better is defined by our error function) will result in lower error values. 
-            If we minimize this function, we will get the best line for our data. Since our error function consists of two parameters (<b>m</b> and <b>b</b>) 
-            we can visualize it as a two-dimensional surface.</li>
-    </ul>
-
-    <div class="image-container">
-        <img src="method.jpg" alt="method">
-        <img src="method2.jpg" alt="method">
-    </div>
-
-    <ul>
-        <li>Each point in this two-dimensional space represents a <b>line</b>. The height of the function at each point is the error value for that line. 
-            Some lines yield smaller error values than others (i.e., fit our data better). When we run gradient descent search, 
-            we will start from some location on this surface and move downhill to find the line with the lowest error.</li>
-    </ul>
-    <ul>
-        <li>The horizontal axes represent the parameters (<i>w</i> and <i>β</i>), while the cost function <i>J(w, β)</i> is plotted on the vertical axis. 
-            The graph shows that gradient descent follows a convex function.</li>
-        <li>Our goal is to determine the optimal values of <i>w</i> and <i>β</i> that minimize the cost function (marked by a red arrow in the image). 
-            To achieve this, we start by initializing <i>w</i> and <i>β</i> with random values, allowing Gradient Descent to begin its optimization process.</li>
-        <li>The algorithm then iteratively moves in the direction of the steepest descent, continuously adjusting the values until the cost function reaches its lowest possible value.</li>
-    </ul>
-
-</body>
-           <h2>41. Algorithm</h2>
-
-    <p>Moving forward to find the lowest error (deepest valley) in the cost function (with respect to one weight) we need to tweak the parameters of the model. Using calculus, we know that the slope of a function is the derivative of the function with respect to a value. <i>This slope always points to the nearest valley.</i></p>
-
-    <p class="math">
-        \[
-        Error(m,β) = \frac{1}{N} \sum_{i=1}^{N} (y_i - (m x_i + β))^2
-        \]
-    </p>
-
-    <div class="image-container">
-        <img src="Algorithm.jpg" alt="">
-    </div>
-
-    <p>We can see the graph of the cost function (named <i>Error</i> with symbol <i>J</i>) against just one weight. Now if we calculate the slope (let’s call this \( \frac{dJ}{dw} \)) of the cost function with respect to this one weight, we get the direction we need to move towards, in order to reach the local minima (nearest deepest valley).</p>
-
-    <div class="note">
-        <strong>🔹 Note</strong> <br>
-        The gradient (or derivative) tells us the incline or slope of the cost function. Hence, to minimize the cost function, we move in the direction opposite to the gradient.
-    </div>
-
-</body>
-<h2>42. Steps</h2>
-
-    <ul>
-        <li>Initialize the weights <b>w</b> randomly.</li>
-        <li>Calculate the gradients <b>G</b> of cost function w.r.t parameters. This is done using partial differentiation:<br>
-            \[
-            G = \frac{\partial J(w)}{\partial w}
-            \]
-            The value of the gradient <b>G</b> depends on the inputs, the current values of the model parameters, and the cost function.
-        </li>
-        <li>Update the weights by an amount proportional to <b>G</b>, i.e. <b>w = w - ηG</b></li>
-        <li>Repeat until the cost <b>J(w)</b> stops reducing, or some other pre-defined termination criteria is met.</li>
-    </ul>
-
-    <em>gradient descent / batch gradient descent</em>
-
-    <div class="code-container">
-<pre>
-def calculate_cost(theta, x, y):
-    """
-    calculates the cost for the given X and y
-    """
-    m = len(y)
-    predictions = x.dot(theta)
-    cost = np.sum(np.square(predictions - y)) / (2 * m)
-    return cost
-
-def gradient_descent(X, y, theta, learning_rate=0.01, iterations=1000):
-    """
-    returns the final theta vector and the array of the cost history
-    """
-    m = len(y)
-    cost_history = np.zeros(iterations)
-    theta_history = np.zeros((iterations, 2))
-
-    for i in range(iterations):
-        prediction = X.dot(theta)
-        theta = theta - (1 / m) * learning_rate * (X.T.dot((prediction - y)))
-        theta_history[i, :] = theta.T
-        cost_history[i] = calculate_cost(theta, X, y)
-
-    return theta, cost_history, theta_history
-</pre>
-    </div>
-    <h2>43. Learning Rate</h2>
-
-    <p>
-        How big the steps are that Gradient Descent takes into the direction of the local minimum are determined by the so-called 
-        <b>learning rate</b>. It determines how fast or slow we will move towards the optimal weights. In order for Gradient 
-        Descent to reach the local minimum, we have to set the learning rate to an appropriate value, which is neither too low 
-        nor too high.
-    </p>
-
-    <p>
-        This is because if the steps it takes are too big, it maybe will not reach the local minimum because it just bounces back 
-        and forth between the convex function of gradient descent like you can see on the left side of the image below. If you set 
-        the learning rate to a very small value, gradient descent will eventually reach the local minimum but it will maybe take too 
-        much time like you can see on the right side of the image.
-    </p>
-
-    <div class="image-container">
-        <img src="learning rate.jpg" alt="Big vs Small Learning Rate">
-    </div>
-
-    <div class="note">
-        <strong>Note:</strong> When you’re starting out with gradient descent on a given problem, just simply try 0.001, 0.003, 0.01, 
-        0.03, 0.1, 0.3, 1 etc. as it’s learning rates and look which one performs the best.
-    </div>
-        <h2> 44. Convergence</h2>
-
-        <p>
-            Once the agent, after many steps, realizes the cost does not improve by a lot and it is stuck very near a particular point 
-            (minima), technically this is known as <b>convergence</b>. The value of the parameters at that very last step is known as the 
-            ‘best’ set of parameters, and we have a trained model.
-        </p>
-
-        <div class="image-container">
-            <img src="Convergence.jpg" alt="Gradient Descent Convergence">
+<section id="contact" class="content-box">
+    <h2>Contact Me</h2>
+    <div class="contact-info">
+        <!-- Email Section with reCAPTCHA -->
+        <div class="contact-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon" class="contact-icon">
+            <p>Email: <span id="email-container">[Hidden]</span></p>
+            <!-- Google reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY" data-callback="showEmail"></div>
         </div>
 
-        <h3>1.Types of Gradient Descent</h3>
+        <!-- LinkedIn Section -->
+        <div class="contact-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon" class="contact-icon">
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/arafat-ali-mondal-970259264/" target="_blank">LinkedIn Profile</a></p>
+        </div>
 
-        <p>
-            Three popular types of Gradient Descent that mainly differ in the amount of data they use.
-        </p>
-
-        <h3> 2.Batch Gradient Descent</h3>
-
-        <p>
-            Also called vanilla gradient descent, calculates the error for each example within the training dataset, but only after all 
-            training examples have been evaluated, the model gets updated. This whole process is like a cycle and called a training 
-            epoch.
-        </p>
-
-        <ul>
-            <li>It’s computationally efficient, produces a stable error gradient, and ensures stable convergence.</li>
-            <li>However, the stable error gradient can sometimes result in a state of convergence that isn’t optimal. It also requires 
-                the entire training dataset to be in memory.</li>
-        </ul>
-
-        <div class="note">
-            🚀 Tip: Experiment with different learning rates (0.001, 0.003, 0.01, etc.) to find the best performance!
-      
-
-</body>
-</body>
-    <h2>45.  Stochastic gradient descent (SGD)</h2>
-
-    <p>
-        In vanilla gradient descent algorithms, we calculate the gradients on each observation one by one; In stochastic gradient descent we can choose the random observations randomly. 
-        It is called <b>stochastic</b> because samples are selected randomly (or shuffled) instead of as a single group (as in standard gradient descent) or in the order they appear in the training set. 
-        This means that it updates the parameters for each training example, one by one. This can make SGD faster than Batch Gradient Descent, depending on the problem.
-    </p>
-
-    <ul>
-        <li>One advantage is that the frequent updates allow us to have a pretty detailed rate of improvement. The frequent updates are more computationally expensive as the approach of Batch Gradient Descent.</li>
-        <li>The frequency of those updates can also result in noisy gradients, which may cause the error rate to jump around, instead of slowly decreasing.</li>
-    </ul>
-
-    <h3><i>Stochastic gradient descent</i></h3>
-
-    <pre><code>
-def stochastic_gradient_descent(X, y, theta, learning_rate=0.01, iterations=100):
-"""
-Returns the final theta vector and the array of the cost history
-"""
-m = len(y)
-cost_history = np.zeros(iterations)
-
-for it in range(iterations):
-    cost = 0.0
-    for i in range(m):
-        rand_ind = np.random.randint(0, m)
-        X_i = X[rand_ind, :].reshape(1, X.shape[1])
-        y_i = y[rand_ind].reshape(1, 1)
-        prediction = np.dot(X_i, theta)
-
-        theta = (1/m) * learning_rate * (X_i.T.dot((prediction - y_i)))
-        cost += calculate_cost(theta, X_i, y_i)
-    cost_history[it] = cost
-
-return theta, cost_history, theta_history
-    </code></pre>
-</div>
-
-    <h2>46. Mini-batch Gradient Descent</h2>
-
-    <p>
-        A combination of the concepts of SGD and Batch Gradient Descent. It simply splits the training dataset into small batches and performs an update for each of these batches. 
-        Therefore, it creates a balance between the robustness of stochastic gradient descent and the efficiency of batch gradient descent.
-    </p>
-
-    <p>
-        1. Common mini-batch sizes range between 50 and 256, but like for any other machine learning techniques, there is no clear rule, because they can vary for different applications. 
-        It is the most common type of gradient descent within deep learning.
-    </p>
-
-    <h3> Mini-batch gradient descent</h3>
-
-    <p>
-        A combination of Stochastic Gradient Descent (SGD) and Batch Gradient Descent. It balances robustness and efficiency by splitting the dataset into small batches and updating for each batch.
-    </p>
-
-    <div class="code-block">
-<pre><code>def stochastic_gradient_descent(X, y, theta, learning_rate=0.01, iterations=100, batch_size=20):
-"""
-Returns the final theta vector and the array of the cost history
-"""
-m = len(y)
-cost_history = np.zeros(iterations)
-n_batches = int(m / batch_size)
-
-for it in range(iterations):
-    cost = 0.0
-    indices = np.random.permutation(m)
-    X = X[indices]
-    y = y[indices]
-
-    for i in range(0, m, batch_size):
-        X_i = X[i:i+batch_size]
-        y_i = y[i:i+batch_size]
-        X_i = np.c_[np.ones(len(X_i)), X_i]
-        prediction = np.dot(X_i, theta)
-
-        theta -= (1/m) * learning_rate * (X_i.T.dot((prediction - y_i)))
-        cost += calculate_cost(theta, X_i, y_i)
-    cost_history[it] = cost
-
-return theta, cost_history, theta_history
-</code></pre>
+        <!-- Location Section with Google Map -->
+        <div class="contact-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/684/684809.png" alt="Location Icon" class="contact-icon">
+            <p>Location: New York, USA</p>
+            <!-- Google Map Embed -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059445135!2d-74.25986613799748!3d40.69714941774136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1698765678901!5m2!1sen!2sin" 
+                width="100%" 
+                height="200" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
     </div>
-    <h2> 999999. Plz wait for other topic</h2>
-</div>
+</section>
 
-</body>
-</html>
+<script>
+    // Function to show email after reCAPTCHA is completed
+    function showEmail() {
+        document.getElementById("email-container").innerHTML = '<a href="mailto:arafatpersonal2025@gmail.com">arafatpersonal2025@gmail.com</a>';
+    }
+</script>
+
+<!-- Add Google reCAPTCHA Script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<p class="signature">@Arafat Ali Mondal 2025</p>
