@@ -18,6 +18,8 @@
         header {
             display: flex;
             justify-content: space-between;
+            flex-direction: column;
+            width: 100%;
             align-items: center;
             padding: 20px;
             background: linear-gradient(90deg, #011325, #007bff);
@@ -262,7 +264,160 @@
             background: #161b22;
             box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
         }
-        
+        /* General Styles (Applies to all screen sizes) */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+/* Ensure elements scale properly */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive Navigation */
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background: #333;
+        color: #fff;
+        padding: 10px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 60px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .hero img {
+        width: 150px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .content-box {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .team-container {
+        flex-direction: column;
+    }
+
+    .team-member {
+        max-width: 400px;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    .contact-info {
+        gap: 10px;
+    }
+}
+
+/* Tablet View */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+    }
+
+    .hero img {
+        width: 180px;
+        margin-bottom: 20px;
+    }
+
+    .content-box {
+        max-width: 90%;
+        padding: 30px;
+    }
+
+    .team-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .team-member {
+        max-width: 300px;
+    }
+}
+
+/* Desktop View */
+@media screen and (min-width: 1025px) {
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 20px;
+        text-align: left;
+    }
+
+    .hero img {
+        width: 200px;
+        margin-right: 20px;
+    }
+
+    .content-box {
+        max-width: 800px;
+    }
+
+    .team-container {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .team-member {
+        width: 250px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -272,13 +427,12 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#research-interests">Research Interests</a></li>
-                <li><a href="#education">Education & Work Experience</a></li>
-              
-
+                <li><a href="#education">Education</a></li>
+                <li><a href="#work-experience">Work Experience</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <a href="#ourteam">Our Team</a>
                 <li><a href="#On Going Projects">My works</a></li>
-                <!-- <li><a href="#My research works">On Going Projects</a></li> -->
+                <li><a href="#My research works">On Going Projects</a></li>
                 <li><a href="#ml">Learning </a></li>
                 
                 
@@ -724,7 +878,7 @@
                 </div>
             
                 <div style="display: flex; justify-content: center; margin-top: 20px;">
-                    <a href="ml.html" target="_blank" style="background: #ff00d4; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+                    <a href="What is Machine Learning.html" target="_blank" style="background: #ff00d4; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
                         Machine Learning Key Note →
                     </a>
                 </div>
@@ -740,7 +894,7 @@
                 <h4 class="Jan">🎉 Fun with ML!!!!!</h4>
                 <div id="blog-container"></div>
                 <div style="display: flex; justify-content: center; margin-top: 20px;">
-                    <a href="dl.html" target="_blank" style="background: #28a745; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+                    <a href="Machine Learning Quiz.html" target="_blank" style="background: #28a745; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
                         Take Quiz →
                     </a>
                 </div>
