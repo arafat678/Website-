@@ -1,0 +1,435 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning Made Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .content-box {
+            background: #444;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #8457ff;
+        }
+        h4 {
+            color: #bbb;
+        }
+        .disclaimer {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: auto;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background-color: #57b3ff;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: #ff00dd;
+            transform: scale(1.05);
+        }
+
+        .toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .toggle-btn {
+            background-color: #ffdd57;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #41089e;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #image-container {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            if (body.style.backgroundColor === 'white') {
+                body.style.backgroundColor = '#333';
+                body.style.color = 'white';
+            } else {
+                body.style.backgroundColor = 'white';
+                body.style.color = 'black';
+            }
+        }
+
+        function showImage() {
+            const imgContainer = document.getElementById("image-container");
+            imgContainer.style.display = "block";
+        }
+
+        function hideImage() {
+            const imgContainer = document.getElementById("image-container");
+            imgContainer.style.display = "none";
+        }
+    </script>
+</head>
+<body>
+
+    <section id="project-help" class="content-box">
+        <h2>My All Research Work</h2>
+        <h4 class="typing"></h4>
+        <p>All projects and thesis works</p>
+
+        <div id="blog-container"></div>
+
+        <div class="disclaimer">
+            <p><strong>Disclaimer:</strong> Information may be subject to updates.</p>
+        </div>
+    </section>
+
+    <div class="toggle-container">
+        <button class="toggle-btn" onclick="toggleMode()">Switch Mode</button>
+    </div>
+
+    <div class="container">
+        <h1> Display System for Spatial Content Exploration in Museums</h1>
+        <h2>Abstract</h2>
+        <p>
+            This study introduces an interactive display system for research science museums, designed to enhance 
+            spatial content exploration. The system utilizes a projector-camera setup to track a white sheet of 
+            paper and dynamically project content onto it. This enables a hands-on, engaging experience for 
+            visitors, allowing them to interact with digital exhibits intuitively.The proposed system offers a novel approach to displaying complex subjects such as geographic maps, 
+            human anatomy, and historical artifacts. By combining object tracking and real-time projection, 
+            the system fosters an immersive educational environment. This research aims to improve the accessibility 
+            and effectiveness of museum exhibits by integrating interactive digital elements.
+        </p>
+        <button class="btn" onmouseover="showImage()" onmouseout="hideImage()">Learn More</button>
+        <div id="image-container">
+            <img src="my work/sensor.jpg" alt="Mr.Arafat Ali Mondal">
+        </div>
+    
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Breast Cancer Detection Using KNN</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #333;
+                color: white;
+                text-align: center;
+            }
+            .content-box {
+                background: #444;
+                padding: 20px;
+                margin: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            }
+            h2 {
+                color: #ff4081;
+            }
+            .container {
+                background: rgba(255, 255, 255, 0.1);
+                padding: 25px;
+                border-radius: 15px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                max-width: 800px;
+                margin: auto;
+            }
+            .btn {
+                background-color: #57b3ff;
+                color: #333;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: transform 0.3s ease, background 0.3s ease;
+                text-transform: uppercase;
+            }
+            .btn:hover {
+                background-color: #ff00dd;
+                transform: scale(1.05);
+            }
+            #image-container {
+                display: none;
+                margin-top: 20px;
+            }
+            .btn:hover + #image-container {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="project-help" class="content-box">
+            <h2>A Novel Method for Breast Cancer Detection Using KNN</h2>
+            <p>Early and accurate detection of breast cancer can significantly reduce mortality rates.</p>
+        </section>
+    
+        <div class="container">
+            <h2>Abstract</h2>
+            <p>
+                Breast Cancer is a leading cause of death among women, so early and accurate detection can help to decrease
+                mortality rates. This study aims to develop a novel approach for detecting breast cancer using K-Nearest Neighbors (KNN).
+                We conducted a thorough literature review, applied appropriate research methodology, and designed an algorithm
+                to predict cancer on mammography images. Our proposed approach achieved an accuracy of 68%.
+            </p>
+            <button class="btn">Learn More</button>
+            <div id="image-container">
+                <img src="my work/breast_cancer_detectio.jpg" alt="Breast Cancer Detection" width="400">
+            </div>
+        </div>
+    </body>
+    </html> -->
+    
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Research works </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .content-box {
+            background: #444;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #ff4081;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn {
+            background-color: #57b3ff;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: #ff00dd;
+            transform: scale(1.05);
+        }
+
+        .toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .toggle-btn {
+            background-color: #ffdd57;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #41089e;
+        }
+
+        #image-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .btn:hover + #image-container {
+            display: block;
+        }
+
+        /* Light mode styles */
+        .light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        .light-mode .content-box {
+            background: #f0f0f0;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .light-mode .container {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .light-mode .btn {
+            background-color: #8457ff;
+            color: white;
+        }
+
+        .light-mode .btn:hover {
+            background-color: #ff4081;
+        }
+    </style>
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle("light-mode");
+        }
+    </script>
+</head>
+<body>
+    
+
+    <div class="toggle-container">
+        <button class="toggle-btn" onclick="toggleMode()">Switch Mode</button>
+        
+    </div>
+
+    <section id="My research works" class="content-box">
+        <h2>My All projects and thesis works</h2>
+        
+    </section>
+
+    <div class="container">
+        
+            <h1>A Novel Method for Breast Cancer Detection Using KNN</h1>
+        <h2>Abstract</h2>
+        <p>
+            Breast Cancer is a leading cause of death among women, so early and accurate detection of the cancer can help to decrease breast cancer mortality rates. In detection of abnormalities, computer-aided detection plays an especially significant role for radiologists. Screening programs helps to detect breast cancer early, thus enabling easier treatment and higher rates of survival as compared to late-stage cancers. This study aims to develop a novel approach for detection of breast cancer using K-Nearest Neighbors (KNN). This report is made by conducting a thorough literature review, employing appropriate research methodology, and prescribed an algorithm to predict the cancer on mammography images. We have achieved an accuracy of 68% using the proposed approach.
+        </p>
+        <button class="btn">Learn More</button>
+        <div id="image-container">
+            <img src="my work/breast_cancer_detectio.jpg" alt="Breast Cancer Detection" width="400">
+        </div>
+    
+        <h1> Display System for Spatial Content Exploration in Museums</h1>
+        <h2>Abstract</h2>
+        <p>
+            This study introduces an interactive display system for research science museums, designed to enhance spatial content exploration. The system utilizes a projector-camera setup to track a white sheet of paper and dynamically project content onto it. This enables a hands-on, engaging experience for  visitors, allowing them to interact with digital exhibits intuitively.The proposed system offers a novel approach to displaying complex subjects such as geographic maps human anatomy, and historical artifacts. By combining object tracking and real-time projection  the system fosters an immersive educational environment. This research aims to improve the accessibility 
+            and effectiveness of museum exhibits by integrating interactive digital elements.
+        </p>
+        <button class="btn" onmouseover="showImage()" onmouseout="hideImage()">Learn More</button>
+        <div id="image-container">
+            <img src="my work/sensor.jpg" alt="Mr "width="400">
+        </div>
+
+</body>
+</html>
+<section id="project-help" class="">
+        
+        <h1> A REVIEW PAPER ON INCREASING EFFICIENCY OF SOLAR CELLS USING ARTIFICIAL INTELLIGENCE AND NANOTECHNOLOGY</h1>
+    <h2>Abstract</h2>
+    <p>
+        With the increasing demand of electricity, the conventional sources of energy is running out. So, scientists have introduced alternating sources of energy to meet the demand of the energy. Solar energy is one of the alternating energy sources. In this energy conversion process, solar cells absorb direct and indirect sunrays and convert it into electrical energy. But main problem with solar cells is its efficiency and storage. The solar cells can reach upto 42% of its efficiency. Nanotechnology on the other hand is the most developed technology which can help increasing the generation and storage of solar energy. Using of nanoparticles in energy sector can help boosting the efficiency and generation of the solar cells by increasing the light scattering. Whereas artificial intelligence (machine learning), helps scaling up the manufacturing of solar cells. This paper presents a detailed review on how to increase the efficiency and generation of solar cells along with the storage using nanoparticles and artificial intelligence.
+    </p>
+    <button class="btn">Learn More</button>
+    <div id="image-container">
+        <img src="my work/solor celljpg.jpg" alt=" name" width="400">
+    </div>
+    <section id="project-help" class="">
+        
+        <h1>Design and Analysis of P&O algorithm based MPPT solar system in PSIM</h1>
+    <h2>Abstract</h2>
+    <p>
+        Conventional solar panels suffer with non-identical losses (resistive losses, diode leakage, loss of material properties etc.). To overcome these unwanted phenomena, a solar maximum power point tracking (MPPT) algorithm has been introduced. In this paper, the algorithms used for tracking the sun (or the solar maximum power point tracking algorithm) has been introduced & a brief description of the basic & easiest algorithm i.e., the P&O Algorithm using PSIM software has been provided to give a clear view about the concept & implementation of MPPT.
+    </p>
+    <button class="btn">Learn More</button>
+    <div id="image-container">
+        <img src="my work/paper gnit.jpg" alt=" name" width="400">
+        <img src="my work/gnit.jpg" alt=" name" width="400">
+    </div>
+    
+</div>
+
+</body>

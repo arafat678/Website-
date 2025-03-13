@@ -1,0 +1,341 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Quiz Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            padding: 20px;
+        }
+        .quiz-container {
+            background: white;
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in-out;
+            color: black;
+            position: relative;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .options button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        .correct {
+            background-color: #2ecc71 !important;
+            animation: correctAnswer 0.5s ease-in-out;
+        }
+        .wrong {
+            background-color: #e74c3c !important;
+            animation: wrongAnswer 0.5s ease-in-out;
+        }
+        .next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .next-btn:hover {
+            background-color: #d68910;
+            transform: scale(1.05);
+        }
+        .emoji {
+            font-size: 2em;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        @keyframes correctAnswer {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes wrongAnswer {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Machine Learning Quiz</h2>
+        <p id="question"></p>
+        <div class="options" id="options"></div>
+        <p id="feedback"></p>
+        <span class="emoji" id="emoji"></span>
+        <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+    <script>
+        const quizData = [
+            {question: "What is supervised learning?", options: ["Training with labeled data", "Training without labels", "Reinforcement learning", "None of the above"], answer: 0},
+            {question: "Which algorithm is used for classification?", options: ["K-Means", "Decision Tree", "Linear Regression", "Apriori"], answer: 1},
+            {question: "What is overfitting?", options: ["Model fits training data well but fails on new data", "Model performs well on all data", "Model does not learn", "None of the above"], answer: 0},
+            {question: "Which activation function is commonly used in deep learning?", options: ["Sigmoid", "ReLU", "Leaky ReLU", "All of the above"], answer: 3},
+            {question: "What is the purpose of dropout in neural networks?", options: ["To prevent overfitting", "To increase training time", "To reduce batch size", "To normalize data"], answer: 0}
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            document.getElementById("question").innerText = currentQuestion.question;
+            document.getElementById("options").innerHTML = "";
+            document.getElementById("emoji").innerText = "";
+            currentQuestion.options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.onclick = () => checkAnswer(button, index);
+                document.getElementById("options").appendChild(button);
+            });
+            document.getElementById("feedback").innerText = "";
+        }
+
+        function checkAnswer(button, index) {
+            const correctIndex = quizData[currentQuestionIndex].answer;
+            if (index === correctIndex) {
+                button.classList.add('correct');
+                document.getElementById("feedback").innerText = "🎉 Correct Answer!";
+                document.getElementById("emoji").innerText = "🎈🎈🎈";
+            } else {
+                button.classList.add('wrong');
+                document.getElementById("feedback").innerText = "😞 Wrong Answer! Correct answer: " + quizData[currentQuestionIndex].options[correctIndex];
+                document.getElementById("emoji").innerText = "😞";
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex = (currentQuestionIndex + 1) % quizData.length;
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Quiz Game</title>
+    <style>
+        :root {
+            --background-color: linear-gradient(to right, #ff7e5f, #feb47b);
+            --text-color: white;
+            --quiz-bg: white;
+            --quiz-text: black;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --correct-bg: #2ecc71;
+            --wrong-bg: #e74c3c;
+            --next-btn-bg: #f39c12;
+            --next-btn-hover: #d68910;
+        }
+
+        [data-theme="dark"] {
+            --background-color: linear-gradient(to right, #2c3e50, #34495e);
+            --text-color: #ecf0f1;
+            --quiz-bg: #34495e;
+            --quiz-text: #ecf0f1;
+            --button-bg: #2980b9;
+            --button-hover: #3498db;
+            --correct-bg: #27ae60;
+            --wrong-bg: #c0392b;
+            --next-btn-bg: #e67e22;
+            --next-btn-hover: #d35400;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: var(--background-color);
+            color: var(--text-color);
+            padding: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .quiz-container {
+            background: var(--quiz-bg);
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease-in-out;
+            color: var(--quiz-text);
+            position: relative;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--button-bg);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .options button:hover {
+            background-color: var(--button-hover);
+            transform: scale(1.05);
+        }
+
+        .correct {
+            background-color: var(--correct-bg) !important;
+            animation: correctAnswer 0.5s ease-in-out;
+        }
+
+        .wrong {
+            background-color: var(--wrong-bg) !important;
+            animation: wrongAnswer 0.5s ease-in-out;
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--next-btn-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .next-btn:hover {
+            background-color: var(--next-btn-hover);
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            font-size: 2em;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--button-hover);
+        }
+
+        @keyframes correctAnswer {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes wrongAnswer {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+    <div class="quiz-container">
+        <h2>ML Quiz</h2>
+        <p id="question"></p>
+        <div class="options" id="options"></div>
+        <p id="feedback"></p>
+        <span class="emoji" id="emoji"></span>
+        <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+    <script>
+        const quizData = [
+            {question: "What is supervised learning?", options: ["Training with labeled data", "Training without labels", "Reinforcement learning", "None of the above"], answer: 0},
+            {question: "Which algorithm is used for classification?", options: ["K-Means", "Decision Tree", "Linear Regression", "Apriori"], answer: 1},
+            {question: "What is overfitting?", options: ["Model fits training data well but fails on new data", "Model performs well on all data", "Model does not learn", "None of the above"], answer: 0},
+            {question: "Which activation function is commonly used in deep learning?", options: ["Sigmoid", "ReLU", "Leaky ReLU", "All of the above"], answer: 3},
+            {question: "What is the purpose of dropout in neural networks?", options: ["To prevent overfitting", "To increase training time", "To reduce batch size", "To normalize data"], answer: 0}
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            document.getElementById("question").innerText = currentQuestion.question;
+            document.getElementById("options").innerHTML = "";
+            document.getElementById("emoji").innerText = "";
+            currentQuestion.options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.onclick = () => checkAnswer(button, index);
+                document.getElementById("options").appendChild(button);
+            });
+            document.getElementById("feedback").innerText = "";
+        }
+
+        function checkAnswer(button, index) {
+            const correctIndex = quizData[currentQuestionIndex].answer;
+            if (index === correctIndex) {
+                button.classList.add('correct');
+                document.getElementById("feedback").innerText = "🎉 Correct Answer!";
+                document.getElementById("emoji").innerText = "🎈🎈🎈";
+            } else {
+                button.classList.add('wrong');
+                document.getElementById("feedback").innerText = "😞 Wrong Answer! Correct answer: " + quizData[currentQuestionIndex].options[correctIndex];
+                document.getElementById("emoji").innerText = "😞";
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex = (currentQuestionIndex + 1) % quizData.length;
+            loadQuestion();
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>

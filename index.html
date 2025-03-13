@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lab - Arafat Ali Mondal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        /* Horizontal Scrollable Navigation */
+        .scroll-nav-container {
+            display: flex;
+            align-items: center;
+            background: #011325;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .scroll-nav {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            white-space: nowrap;
+            width: 90%;
+            padding: 10px;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+        }
+
+        .scroll-nav::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari */
+        }
+
+        .scroll-nav a {
+            flex: 0 0 auto;
+            padding: 10px 20px;
+            margin: 5px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .scroll-nav a:hover {
+            background: #0056b3;
+        }
+
+        /* Scroll Buttons */
+        .scroll-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .scroll-btn.left {
+            left: 5px;
+        }
+
+        .scroll-btn.right {
+            right: 5px;
+        }
+
+        .scroll-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scrollable Navigation Bar -->
+    <div class="scroll-nav-container">
+        <button class="scroll-btn left" onclick="scrollLeftNav()">❮</button>
+        <div class="scroll-nav" id="scrollNav">
+                <a href="#home">Home</a>
+                <a href="#research-interests">Research Interests</a>
+                <a href="#education">Education </a>
+                <a href="#work-experience">Work Experience</a>
+                <a href="#publications">Publications</a>
+                <a href="#ourteam">Our Team</a>
+                <a href="#On Going Projects">My Research Works</a>
+                <a href="#We are Working">We are Working</a>
+
+                <!-- <li><a href="#My research works">On Going Projects</a></li> -->
+                <a href="#ml">What is ML </a>
+                <a href="#ml">ML Quiz Game</a>
+                <a href="#DL">What is DL</a>
+                <a href="#our-application">Our Application</a>
+
+                <!-- <li><a href="#OurTeam">Our Team</a></li> -->
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="scroll-btn right" onclick="scrollRightNav()">❯</button>
+    </div>
+
+    <script>
+        function scrollLeftNav() {
+            document.getElementById("scrollNav").scrollBy({
+                left: -150,
+                behavior: "smooth"
+            });
+        }
+
+        function scrollRightNav() {
+            document.getElementById("scrollNav").scrollBy({
+                left: 150,
+                behavior: "smooth"
+            });
+        }
+    </script>
+
+    </div>
+        <!-- Hero Section -->
+        <!-- <section class="hero" id="home">
+            <img src="my image .jpg" alt="Arafat Ali Mondal">
+            <div class="hero-content">
+                <h2>Arafat Ali Mondal</h2>
+                <h2>Master's in AI</h2>
+                <a href="https://www.makautexam.net/" target="_blank">
+                    Maulana Abul Kalam Azad University of Technology, West Bengal, India
+                </a>            
+                <p>
+                    I am Arafat Ali Mondal. I completed my Master’s in Artificial Intelligence in 2024 and have one year of experience in AI and sensor technology as a Research and Development Contributor at the CRTL Lab, NCSM, since March 2024. My work focuses on system design and AI/ML-driven applications. I am currently looking for PhD and internship opportunities in AI, sensor technology, and healthcare automation.
+                </p>
+            </div>
+        </section> -->
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <!-- Left: Profile Image -->
+                <div class="hero-image">
+                    <img src="my image .jpg"  alt="Arafat Ali Mondal">
+                </div>
+        
+                <!-- Right: Content -->
+                <div class="hero-content">
+                    <h1>Arafat Ali Mondal</h1>
+                    <h3>Master's in Artificial Intelligence</h3>
+                    <a href="https://www.makautexam.net/" target="_blank" class="university-link">
+                        Maulana Abul Kalam Azad University of Technology, India
+                    </a>
+                    <p>
+                        I am a passionate AI researcher with a Master’s in Artificial Intelligence (2024). With over a year of experience in AI & sensor technology, 
+                        I have been contributing as an R&D member at CRTL Lab, NCSM. My expertise lies in system design, AI/ML-driven applications, and automation. 
+                        I am actively looking for PhD and internship opportunities in AI, sensor technology, and healthcare automation.
+                    </p>
+        </section>
+
+        <!-- Research Interests -->
+        <section id="research-interests" class="content-box">
+            <h2>
+                <i class="fas fa-microscope" style="color: #28a745;"></i> Research Interests
+            </h2>
+            <ul>
+                <li>Medical Image Computing</li>
+                <li>Data Science in Medicine</li>
+                <li>Artificial Intelligence in Medicine</li>
+                <li>Human-Robot Interaction</li>
+                <li>Soft Robotics</li>
+            </ul>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="content-box">
+            <h2>
+                <i class="fas fa-graduation-cap" style="color: #ffcc00;"></i> Education
+            </h2>
+            <ul>
+                <li>
+                    <h4>M.Tech in AI, 2024</h4>
+                    <a href="https://www.makautexam.net/" target="_blank">
+                        MAKAUT, West Bengal, India
+                    </a>
+                </li>
+                <li>
+                    <h4>B.Tech in EE, 2021</h4>
+                    <a href="https://gnit.ac.in/" target="_blank">
+                        GNIT, West Bengal, India
+                    </a>
+                </li>
+                <li>
+                    <h4>Diploma (Polytechnic) in EE, 2015</h4>
+                    <a href="https://www.dip.rahul.ac.in/" target="_blank">
+                        DIP, West Bengal, India
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+    </script>
+ <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+
+             <section id="work-experience" class="content-box">
+    <h2>
+        <i class="fas fa-briefcase" style="color: #007bff;"></i> Work Experience
+    </h2>
+    <ul>
+        <head> 
+<h3>Research Training and Internships [Feb 2024 - Present] Kolkata, India</h3>
+<p>
+    <a href="https://ncsm.gov.in/" target="_blank" style="text-decoration: none; font-weight: bold; color: #007BFF;">
+        National Council Of Science Museums (NCSM)
+    </a> 
+    in Central Research and Training Laboratory (CRTL), Kolkata, India.
+</p>
+<p><strong>Role:</strong> Research & Development </p>
+    </p> <strong>Advisor:</strong> Mr. Shatadal Ghosh</p>
+<h4>Title: Personalized Content Delivery: An AI-Based Age Estimation Approach  [Ongoing]</h4>
+<ul>
+    <li>Designed a smart AI-based PCD model leveraging visitor characteristics such as height and facial images for age group classification, achieving <strong>97% classification accuracy</strong>.</li>
+    <li>Delivered personalized content with <strong>95% accuracy</strong> based on visitor interests, significantly enhancing user engagement.</li>
+    <li>Currently preparing this work for publication in a conference journal.</li>
+</ul>
+
+<h4> Title: Interactive Display System for Spatial Content Exploration in Museums  [Completed and Published] </h4>
+<ul>
+    <li>Designed an innovative system that tracks a white sheet of paper and projects interactive content onto it, enhancing spatial engagement in educational settings.</li>
+    <li>Focused on immersive, topic-based learning for subjects such as geographic maps, human anatomy, and dioramas, fostering deeper exploration for users.</li>
+    <li>Achieved almost <strong>80% accuracy</strong>, significantly improving the educational experience in science museums.</li>
+    <li>Published in a conference journal in 2024.</li>
+</ul>
+
+<h4>Technology & Programming Skills</h4>
+<ul>
+    <li><strong>Technology:</strong> AI (ML, DL, CV, MediaPipe), Electronics, Sensors, and more.</li>
+    <li><strong>Programming Languages:</strong> Python, Flutter, Flask, HTML, CSS, and more.</li>
+<h3>Bachelor's and Master’s Thesis work [2021-2025]  Kolkata India</h3>
+
+<h4> Title: Quality Grading of Apples Based on Physical Traits Using Image Analysis [Feb 2023 – Jan 2024]</h4>
+<p><strong>Master’s Thesis Advisor:</strong> Dr. Prof. Nabarun Bhattacharyya </p>
+<ul>
+    <li>Developed a user-friendly web and Android application for apple sorting based on physical traits (color, size, and shape).</li>
+    <li>Integrated ML and CV technologies with Flutter, Flask, and other frameworks.</li>
+    <li>Achieved <strong>95% accuracy</strong>, with a prediction range of 89-95% based on the user's apple image.</li>
+    <li>Addressed high-cost challenges by eliminating expensive laboratory requirements.</li>
+    <li>Currently preparing this work for publication in a conference journal.</li>
+</ul>
+
+<h4>Title: Advanced Apple Sorting and Quality Grading Application Using Graph Neural Networks, Vision Transformers and Convolutional Neural Networks [Feb 2024 – Aug 2024]</h4>
+<ul>
+    <li>Explored advanced DL techniques, including ViTs, GNNs, and CNNs, to optimize apple sorting.</li>
+    <li>Utilized a 360-degree view dataset of apples, achieving <strong>97% accuracy</strong>.</li>
+    <li>Developed an ML-driven web and Android application for automated apple sorting.</li>
+    <li>Currently preparing this work for publication in a conference journal.</li>
+</ul>
+
+<h4>Title: A Novel Method for Breast Cancer Detection Using KNN  [Aug 2024 – Ongoing]</h4>
+<strong>Advisor:</strong> Dr. Sayani Mondal, Assistant Professor, Dept. of CS & Engineering, Sister University, Kolkata, India</p>
+<ul>
+    <li>Developed an optimal KNN-based model for breast cancer detection, achieving <strong>97% accuracy</strong> on the MIAS dataset.</li>
+    <li>Published in an international peer-reviewed journal.</li>
+</ul>
+
+<h4> Title: Increasing Efficiency of Solar Cells Using AI and Nanotechnology  [Mar 2022 – Feb 2023, Published]</h4>
+<strong>Advisor:</strong> Moumita Ghosh (Dept. of EE)</p>
+<ul>
+    <li>Investigated AI-driven manufacturing processes and nanoparticle-based light scattering for efficiency improvement.</li>
+    <li>Published in an international reviews journal.</li>
+</ul>
+
+<h4>Title: Design and Analysis of P&O Algorithm-Based MPPT Solar System in PSIM  [Apr 2019 – May 2021, Published]</h4>
+ <strong>Bachelor’s Thesis Advisor:</strong> Mr. Shyamal Kumar Roy, Assistant Professor (Dept. of EE), GNIT</p>
+<ul>
+    <li>Developed a maximum power point tracking (MPPT) algorithm to address non-identical losses in solar panels.</li>
+    <li>Implemented and analyzed the Perturb and Observe (P&O) algorithm using PSIM software.</li>
+    <li>Published in an international peer-reviewed journal.</li>
+</ul>
+
+<h4>Technical Skills</h4>
+<ul>
+    <li><strong>Technologies:</strong> AI (ML, DL, CV), Nanotechnology, Sensor Technology</li>
+    <li><strong>Programming Languages:</strong> Python, Flutter, Flask, HTML, CSS, and more</li>
+</ul>
+</section>
+</ul>
+</section>
+<section id="publications" class="content-box">
+    <h2>📚 Publications</h2>
+    <ul>
+        <head>
+            <style>
+                /* Modern Publications Section Styling */
+                #publications {
+                    background: #f9f9f9;
+                    color: #2c3e50;
+                    padding: 40px;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    width: 80%;
+                    max-width: 900px;
+                    margin: auto;
+                    font-family: 'Poppins', sans-serif;
+                    text-align: center;
+                }
+
+                #publications h2 {
+                    font-size: 28px;
+                    color: #007bff;
+                    border-bottom: 4px solid #007bff;
+                    display: inline-block;
+                    padding-bottom: 10px;
+                    margin-bottom: 20px;
+                }
+
+                #publications ul {
+                    list-style: none;
+                    padding: 0;
+                    margin-top: 20px;
+                }
+
+                #publications li {
+                    background: #ffffff;
+                    padding: 20px;
+                    margin: 15px 0;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.2s;
+                    text-align: left;
+                }
+
+                #publications li:hover {
+                    transform: translateY(-3px);
+                }
+
+                #publications strong {
+                    font-size: 18px;
+                    color: #333;
+                }
+
+                #publications a {
+                    color: #007bff;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+
+                #publications a:hover {
+                    text-decoration: underline;
+                    color: #0056b3;
+                }
+            </style>
+        </head>
+
+        <ul>
+            <li>
+                <strong>Interactive Display System for Spatial Content Exploration in Museums</strong> - ICICEC 2024  
+                <br> DOI: <a href="https://doi.org/10.1109/ICICEC62498.2024">10.1109/ICICEC62498.2024</a>
+            </li>
+            
+            <li>
+                <strong>A Novel Method for Breast Cancer Detection Using KNN</strong> - YMER  
+                <br> ISSN: 0044-0477 | Volume 24, Issue 01 (Jan 2025) | Pages: 807-813  
+                <br> DOI: <a href="https://doi.org/10.37896/YMER24.01/57">10.37896/YMER24.01/57</a> |  
+                <a href="https://www.researchgate.net/publication/388364146_A_Novel_Method_for_Breast_Cancer_Detection_Using_KNN">Read Paper</a>
+            </li>
+
+            <li>
+                <strong>A Review Paper on Increasing Efficiency of Solar Cells Using Artificial 
+                    Intelligence and Nanotechnology</strong> - IJRAR  
+                <br> ID: IJRAR23A2791 | Volume 10, Issue 1 (March 2023) | Pages: 433-435  
+                <br> DOI: <a href="http://doi.one/10.1729/Journal.33448">IJRAR23A2791</a>
+            </li>
+
+            <li>
+                <strong>Design and Analysis of P&O Algorithm-Based MPPT Solar System in PSIM</strong> - YMER  
+                <br> ISSN: 0044-0477 | Volume 21, Issue 6 (June 2022) | Pages: 1188-1194  
+                <br> <a href="http://ymerdigital.com">YMER Digital</a> |  
+                <a href="https://www.researchgate.net/profile/Arafat-Mondal/publication/379994375_Design_and_Analysis_of_PO_algorithm_based_MPPT_solar_system_in_PSIM/links/66263d8d43f8df018d1faf2b/Design-and-Analysis-of-P-O-algorithm-based-MPPT-solar-system-in-PSIM.pdf">Read Paper</a>
+            </li>
+        </ul>
+    </ul>
+</section>
+
+    
+</ul>
+
+        <section id="ourteam" class="content-box">
+            <h2 style="text-align: center;">🚀 Meet Our Team</h2>
+            <div class="team-container"> 
+
+<div class="team-container">
+<div class="team-member">
+    <img src="my image 2.jpg" alt="Mr.Arafat Ali Mondal">
+    <h3><a href="https://www.researchgate.net/profile/Arafat-Mondal?ev=hdr_xprf" target="_blank">Mr.Arafat Ali Mondal</a></h3>
+    <p class="position">Research Intern</p>
+    <p>ML in healthcare, Medical Image Computing, Human-Robot Interaction, Medical image analysis</p>
+</div>
+
+<div class="team-member">
+    <img src="Nabarun .jpg">
+    <h3><a href="https://g.co/kgs/9DHS9hb" target="_blank">Dr. Nabarun Bhattacharyya</a></h3>
+    <!-- <h3>Prof. Nabarun Bhattacharyya</h3> -->
+    <p class="position">Senior Research Scientist</p>
+    <p>IoT, Sensors, AI and ML, Analytics</p>
+</div>
+
+<div class="team-member">
+    <img src="sayani maaa.jpg" alt="Dr.Sayani Mondal">
+    <h3><a href="https://nitsikkim.ac.in/cse/profile.php?sn=790" target="_blank">Dr. Sayani Mondal</a></h3>
+    <p class="position">Assistant Professor, Sister Nivedita University</p>
+    <p>Human Computer Interaction, Software Engineering, ML in Healthcare</p>
+</div>
+<div class="team-member">
+    <img src="selim dada.jpg" alt="Dr.Selim Reja">
+    <h3><a href="https://sites.google.com/view/selimreja/home?authuser=0" target="_blank">Dr. Selim Reja</a></h3>
+    <p class="position">Senior Research Fellow, Indian Statistical Institute, Kolkata</p>
+    <p>Disease Modeling, Epidemiology, Stochasticity, Nonlinear Dynamics</p>
+</div>
+
+<div class="team-member">
+    <img src="images/shatadal.jpg" alt="Mr. Shatadal Ghosh">
+    <h3><a href="https://www.linkedin.com/in/shatadal-ghosh-5abaa256/?originalSubdomain=inf" target="_blank">Mr. Shatadal Ghosh</a></h3>
+    <p class="position">Scientific Officer Head (IT Dept.), NCSM</p>
+    <p>AI & ML, IoT in Museum Displays, Sensors Technology</p>
+</div>
+
+<div class="team-member">
+    <img src="citations.jpeg" alt="Mr. Shyamal Roy">
+    <h3><a href="https://gnit.irins.org/profile/201343" target="_blank">Mr. Shyamal Royl</a></h3>
+    <p class="position">Assistant Professor, Guru Nanak Institute of Technology</p>
+    <p>Power Electronics, Real-Time Energy Management, Sensors Technology</p>
+</div>
+
+<div class="team-member">
+    <img src="naim.jpg" alt="Naim Aktar">
+    <h3>Mr. Naim Aktar</h3>
+    <p class="position">B.Sc(Honours), Calcutta University and  M.Sc Under Burdwan University</p>
+    <p>CalculuS, Topology</p>
+    <head>
+    </div>
+
+<!-- -------------------------------------------hhh-------------------------- -->
+
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Research Works</title>
+        <link rel="stylesheet" href="styles.css"> <!-- External CSS for styling -->
+        <script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <section id="On Going Projects" class="content-box">
+            <h2 class="fade-in">
+                
+                    <img src="https://cdn-icons-png.flaticon.com/512/2702/2702069.png" alt="Research Icon" class="research-icon"> My Research Works
+                </a>
+                <h4 class="">📜 A Collection of My Research Contributions</h4>
+                
+            </h2>
+        </p>
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <a href="My research works.html" target="_blank" style="background: #f7e70a; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+                View Works →
+            </a>
+        </div>
+        </section>
+        
+        <style>
+            .research-icon {
+                width: 24px;
+                height: 24px;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+        </style>
+    </h2>
+    
+<!-- ----------- on going prject ----------- -->
+
+<section id="We are Working" class="content-box" style="text-align: center; padding: 20px;">
+    <h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" 
+             alt="Project Logo" 
+             style="width: 50px; height: auto; margin-right: 15px;">
+        <!-- <a href="" target="_blank" style="text-decoration: none; color: inherit;"> -->
+            We are Working
+        </a>
+    </h2>
+    <p style="font-size: 18px; color: #555; margin-top: 10px;">
+        🚀 Exploring Cutting-Edge Innovations & AI Technology 🤖
+    </p>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <a href="We -are- working.html" target="_blank" style="background: #007BFF; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+            View Projects →
+        </a>
+    </div>
+</section>
+
+
+<section id="ml" class="content-box" style="text-align: center; padding: 20px;">
+    <h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+        
+        <i class="fas fa-brain"></i> What is ML
+    </h2>
+    <h4 class="">🚀 ML is very simple when you think of it this way!</h4>
+
+    <div class="disclaimer">
+        <p>
+            <strong style="color: red;">Disclaimer:</strong> 
+            The content on this website is provided for informational and educational purposes only. While we strive for accuracy, 
+            it may contain errors, inaccuracies, or omissions. Please verify any information with reliable sources before using or 
+            relying on it. We are not responsible for any misunderstandings, misinterpretations, or consequences resulting from 
+            the use of this content. However, the materials shared here may help enhance your understanding of Machine Learning 
+            and related topics. Your use of this website is at your own risk.
+        </p>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <a href="What is Machine Learning.html" target="_blank" style="background: #ff00d4; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+            Machine Learning Key Note →
+        </a>
+    </div>
+</section>
+
+<section id="ML Quiz" class="content-box" style="text-align: center; padding: 20px;">
+    <h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" 
+             alt="ML Quiz Logo" 
+             style="width: 50px; height: auto; margin-right: 15px;">
+        <a href="dl.html" target="_blank" style="text-decoration: none; color: inherit;">ML Quiz</a>
+    </h2>
+    <h4 class="Jan">🎉 Fun with ML!!!!!</h4>
+    <div id="blog-container"></div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <a href="ML Quiz.html" target="_blank" style="background: #28a745; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+            Take Quiz →
+        </a>
+    </div>
+</section>
+
+<style>
+    .read-more {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .read-more:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<!-- ------------------ DL model----------- -->
+<section id="DL" class="content-box" style="text-align: center; padding: 20px;">
+<h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+<img src="https://cdn-icons-png.flaticon.com/512/4249/4249884.png" 
+     alt="DL Logo" 
+     style="width: 50px; height: auto; margin-right: 15px;">
+<a  target="_blank" style="text-decoration: none; color: inherit;">What is DL</a>
+</h2>
+<h4 class="">🧠 DL is very simple when you think of it this way!!!!!!</h4>
+<div id="blog-container"></div>
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+<a href="Deep Learning.html" target="_blank" style="background: #ff5722; color: white; padding: 10px 20px; border-radius: 25px; font-size: 16px; text-decoration: none; font-weight: bold;">
+    Learn DL →
+</a>
+
+</div>
+</section>
+<!-- ---------------OUR APPLIATION ----- -->
+<section id="our-application" class="content-box" style="text-align: center; padding: 20px; background: #eef2f3; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <h2 class="fade-in" style="font-size: 28px; color: #2c3e50; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" 
+             alt="Developing Logo" 
+             style="width: 50px; height: auto; margin-right: 15px;">
+        <span>Our AI-Powered Applications</span>
+    </h2>
+    <h4 style="color: #555; font-weight: 500;">🚀 Explore our innovative AI-driven solutions!</h4>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
+        <!-- Apple Sorting Application -->
+        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); width: 300px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Apple Sorting" style="width: 60px; margin-bottom: 10px;">
+            <h3 style="color: #2c3e50;">ML-Based Apple Sorting</h3>
+            <p style="color: #555;">🍏 AI-powered quality grading system for apples using deep learning.</p>
+            <a href="Application.html" target="_blank" style="background: #ff5722; color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; text-decoration: none; font-weight: bold; display: inline-block;">
+                Learn More →
+            </a>
+        </div>
+
+        <!-- Age Assessment Application -->
+        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); width: 300px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/4332/4332636.png" alt="Age Assessment" style="width: 60px; margin-bottom: 10px;">
+            <h3 style="color: #2c3e50;">AI Age Assessment</h3>
+            <p style="color: #555;">🧑‍⚕️ AI-based age prediction model for healthcare & security applications.</p>
+            <a href="Application.html" target="_blank" style="background: #ff5722; color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; text-decoration: none; font-weight: bold; display: inline-block;">
+                Learn More →
+            </a>
+        </div>
+
+        <!-- Content Delivery Application -->
+        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); width: 300px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3065/3065263.png" alt="Content Delivery" style="width: 60px; margin-bottom: 10px;">
+            <h3 style="color: #2c3e50;">AI Content Delivery</h3>
+            <p style="color: #555;">📡 Smart AI-powered content recommendation system for museums.</p>
+            <a href="Application.html" target="_blank" style="background: #ff5722; color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; text-decoration: none; font-weight: bold; display: inline-block;">
+                Learn More →
+            </a>
+        </div>
+        <!-- AI Breast Cancer Detection -->
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 320px; text-align: center; transition: transform 0.3s ease-in-out;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
+                 alt="Medical AI Logo" 
+                 style="width: 70px; height: auto; margin-bottom: 12px; border-radius: 5px;">
+            <h3 style="color: #2c3e50; font-size: 20px; font-weight: bold;">AI Breast Cancer Detection</h3>
+            <p style="color: #555; font-size: 14px; line-height: 1.5;">🎗️ AI-driven model for early breast cancer detection and diagnosis using deep learning techniques.</p>
+            <a href="Application.html" target="_blank" 
+               style="background: #ff5722; color: white; padding: 10px 18px; border-radius: 20px; font-size: 14px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 10px;">
+                Learn More →
+            </a>
+        </div>
+    </div>
+
+
+</div>
+</section>
+
+</section>
+<script>
+function toggleDarkMode() {
+document.body.classList.toggle("dark-mode");
+}
+
+function showEmail() {
+document.getElementById("email-container").innerHTML = '<a href="mailto:arafatpersonal2025@gmail.com">arafatpersonal2025@gmail.com</a>';
+}
+</script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Arafat Ali Mondal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        /* Contact Section */
+        .content-box {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .contact-item a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* Google Map Embed */
+        iframe {
+            width: 100%;
+            height: 200px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        /* reCAPTCHA Styling */
+        .g-recaptcha {
+            margin-top: 10px;
+        }
+
+        /* Signature */
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #777;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-icon {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Contact Section -->
+        <section id="contact" class="content-box">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <!-- Email Section with reCAPTCHA -->
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon" class="contact-icon">
+                    <p>Email: <span id="email-container">[Hidden]</span></p>
+                    <!-- Google reCAPTCHA -->
+                    <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY" data-callback="showEmail"></div>
+                </div>
+
+                <!-- LinkedIn Section -->
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon" class="contact-icon">
+                    <p>LinkedIn: <a href="https://www.linkedin.com/in/arafat-ali-mondal-970259264/" target="_blank">LinkedIn Profile</a></p>
+                </div>
+
+                <!-- Location Section with Google Map -->
+                <div class="contact-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684809.png" alt="Location Icon" class="contact-icon">
+                    <p>Location: New York, USA</p>
+                    <!-- Google Map Embed -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059445135!2d-74.25986613799748!3d40.69714941774136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1698765678901!5m2!1sen!2sin" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signature -->
+        <p class="signature">@Arafat Ali Mondal 2025</p>
+    </div>
+
+    <!-- Add Google reCAPTCHA Script -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+
+    <script>
+        // Function to show email after reCAPTCHA is completed
+        function showEmail() {
+            document.getElementById("email-container").innerHTML = '<a href="mailto:arafatpersonal2025@gmail.com">arafatpersonal2025@gmail.com</a>';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> We are working</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .content-box {
+            background: #444;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #f107de;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn {
+            background-color: #57b3ff;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: #ff00dd;
+            transform: scale(1.05);
+        }
+
+        .toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .toggle-btn {
+            background-color: #ffdd57;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #9e0885;
+        }
+
+        #image-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .btn:hover + #image-container {
+            display: block;
+        }
+
+        /* Light mode styles */
+        .light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        .light-mode .content-box {
+            background: #f0f0f0;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .light-mode .container {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .light-mode .btn {
+            background-color: #8457ff;
+            color: white;
+        }
+
+        .light-mode .btn:hover {
+            background-color: #ff4081;
+        }
+    </style>
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle("light-mode");
+        }
+    </script>
+</head>
+<body>
+    
+
+    <div class="toggle-container">
+        <button class="toggle-btn" onclick="toggleMode()">Switch Mode</button>
+    </div>
+
+    <section id="We are working" class="content-box">
+        <h2> Our research encompasses both completed projects and ongoing developments Driving innovation in AI, Robotics and ML in healthcare</h2>
+        
+    </section>
+
+    <div class="container">
+        
+            <h1> Advanced Apple Sorting and Quality Grading Application Using Graph Neural Networks, Vision Transformers and Convolutional Neural Networks</h1>
+        <h2>Abstract</h2>
+        <h2>The paper has been submitted </h2>
+        <p>
+        In the field of agricultural landscape, quality grading of fruits (apples) plays an important role in the process, which markedly lays an impact on both marketability and international trading. Some known traditional methods, i.e., human-based grading is very much time-consuming and it needs skilled labor as well as it's not cost effective, where as on the other hand, some labs need high maintenance instruments. This main challenge is for small-scale farmers, the apple farmer struggles a lot to achieve the accuracy needed for exact harvesting.  This study addresses these issues and tries to solve the problem with its research aims to automate the identification and grading of apples based on shape, color, and size and more credit. The purpose of this initiative is to integrate Deep Learning (DL), Graph Neural Networks (GNNs), Vision Transformers (ViTs), and Convolutional Neural Networks (CNNs) technologies which excels in analyzing the physical characteristics of objects, including apples. Here GNNs VITs and CNNs are used for in-object detection and height and weight tasks and apple recognition. The final outcome is to develop user friendly web and Android application for apple quality grading and sorting for the farmers. Apples of various shapes, sizes, and colors are used to train and test the DL models, ensuring the enhancement of the application of grade apples based on their unique physical traits. In this study ripped apples or damaged apples are ignored. The vision of the study is to provide an efficient, cost-effective application that empowers farmers with a reliable tool for quality grading, which will gradually improve the overall market existence for their product and land on making more profit.
+       </P>
+        <button class="btn">see More</button>
+        <div id="image-container">
+            <img src="my work/apple 1.jpg" alt="" width="400">
+            <img src="my work/apple 3.jpg" alt="" width="400">
+            <img src="my work/apple 33.jpg" alt="" width="400">
+        </div>
+    
+        <h1> Personalized Content Delivery An AI-Based Age Estimation Approach </h2>
+        <h2>Abstract</h2>
+        <h2>The paper has been submitted </h2>
+        <p>
+            Science museums contribute significantly to the development of curiosity and interest in science and technology. To close the gap in engaging and immersive museum exhibits, the National Council of Science Museums' (NCSM) Central Research and Training Laboratory (CRTL) plans to increase visitor engagement by developing cutting-edge, non-interactive exhibits that incorporate advanced sensor-based and AI-driven technologies. These are systems intended to provide seamless educational experiences that reflect the growing role of artificial intelligence (AI) in daily life. The project created a system that uses height-based and facial recognition technologies to estimate visitor age, allowing for personalized content delivery. By incorporating cutting-edge technology in the design of the exhibition, the system demonstrated AI innovative capabilities and applications that prompted visitors to engage with and assess advancements in science and technology. The exhibition's autonomous and adaptive characteristics made it approachable for a diverse audience of museum-goers, guaranteeing inclusivity and efficiency. This initiative aligns with the NCSM's objective of instilling intellectual curiosity and technological understanding in its visitors. CRTL transformed museums into dynamic spaces that highlight the intersection of science, technology, and creativity, motivating visitors of all ages through the introduction of non-interactive, technology-driven exhibits.
+        </p>
+        <button class="btn" onmouseover="showImage()" onmouseout="hideImage()">see More</button>
+        <div id="image-container">
+            <img src="my work/s2.jpg" alt="Mr "width="400">
+            <img src="my work/s1.jpg" alt="Mr "width="400">
+            <img src="my work/s3.jpg" alt="Mr "width="400">
+        </div>
+
+</body>
+</html>
+<section id="project-help" class="">
+        
+        <h1> MuseProbe Lens: Multi-Probe Interactive Display for Spatial Exploration in Museums</h1>
+    <h2>Abstract</h2>
+    <h2>We are working </h2>
+    <p>
+        In the research of science museums, the advancement of innovative display technologies is a main goal. Our approach here presents Muse Probe Lens, which is a multi-probe interactive display system utilizing spatial engagement in order to present an immersive learning experience. This technology can track a white sheet of paper with precision and project content onto its surface alone, allowing the user to engage with specialized topics such as maps of geography, human anatomy, and horizontal dioramas. The platform is designed for topic-based learning, and through intuitive and engaging ways, MuseProbe Lens accommodates all users. It develops spatial interaction by promoting deeper understanding and encouraging in-depth exploration; therefore, this is a very promising tool for educational enrichment within the museum environment.
+    </p>
+        <button class="btn">see More</button>
+    <div id="image-container">
+        <img src="" alt="working" width="400">
+    </div>
+    <section id="project-help" class="">
+        
+        <!-- <h1>Design and Analysis of P&O algorithm based MPPT solar system in PSIM</h1>
+    <h2>Abstract</h2>
+    <p>
+        Conventional solar panels suffer with non-identical losses (resistive losses, diode leakage, loss of material properties etc.). To overcome these unwanted phenomena, a solar maximum power point tracking (MPPT) algorithm has been introduced. In this paper, the algorithms used for tracking the sun (or the solar maximum power point tracking algorithm) has been introduced & a brief description of the basic & easiest algorithm i.e., the P&O Algorithm using PSIM software has been provided to give a clear view about the concept & implementation of MPPT.
+    </p>
+    <button class="btn">Learn More</button>
+    <div id="image-container">
+        <img src="my work/paper gnit.jpg" alt=" name" width="400">
+        <img src="my work/gnit.jpg" alt=" name" width="400">
+    </div> -->
+    
+</div>
+
+</body>
