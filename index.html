@@ -8,22 +8,21 @@
     <style>
         /* General Styles */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background: #f4f4f4;
             color: #333;
-            text-align: center;
             transition: background 0.5s ease, color 0.5s ease;
         }
 
         .container {
-            max-width: 1200px;
-            margin: auto;
+            margin-left: 250px; /* Adjusted for sidebar */
             padding: 20px;
+            transition: margin-left 0.3s ease;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3 {
             color: #333;
         }
 
@@ -36,54 +35,71 @@
             text-decoration: underline;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Header and Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background: linear-gradient(90deg, #011325, #007bff);
-            color: white;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            position: sticky;
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            position: fixed;
             top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
+            left: -250px;
+            height: 100%;
+            background: #011325;
             color: white;
+            padding-top: 20px;
+            transition: left 0.3s ease;
+            overflow-y: auto;
         }
 
-        nav ul {
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .sidebar ul {
             list-style: none;
-            display: flex;
-            gap: 20px;
             padding: 0;
-            margin: 0;
         }
 
-        nav a {
+        .sidebar ul li {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .sidebar ul li a {
             color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
+            font-size: 18px;
+            display: block;
+            transition: 0.3s;
         }
 
-        nav a:hover {
-            color: #ffcc00;
+        .sidebar ul li a:hover {
+            background: #007bff;
+            border-radius: 5px;
         }
 
+        /* Sidebar Toggle Button */
         .menu-toggle {
-            display: none;
             font-size: 24px;
             cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background: #0056b3;
         }
 
         /* Hero Section */
@@ -91,23 +107,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 100px 20px;
+            padding: 50px 20px;
             background: linear-gradient(45deg, #007bff, #00c851);
             color: white;
+            border-radius: 0 0 50px 50px;
             text-align: left;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.1);
-            z-index: 1;
         }
 
         .hero img {
@@ -115,116 +119,10 @@
             height: auto;
             border-radius: 10px;
             margin-right: 20px;
-            z-index: 2;
-            animation: float 3s ease-in-out infinite;
         }
 
         .hero-content {
             max-width: 600px;
-            z-index: 2;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            animation: slideInLeft 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            animation: slideInRight 1s ease-out;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Content Boxes */
-        .content-box {
-            background: white;
-            padding: 30px;
-            margin: 20px auto;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .content-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Team Section */
-        .team-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .team-member {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-        }
-
-        .team-member img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #ddd;
-        }
-
-        .team-member h3 {
-            color: #cc0066;
-            font-size: 1.1em;
-            margin-top: 10px;
-        }
-
-        .position {
-            font-weight: bold;
-            color: #666;
-            font-size: 0.9em;
         }
 
         /* Dark Mode */
@@ -233,49 +131,31 @@
             color: #c9d1d9;
         }
 
-        .dark-mode header {
+        .dark-mode .sidebar {
             background: #161b22;
+        }
+
+        .dark-mode a {
+            color: #58a6ff;
         }
 
         .dark-mode .hero {
             background: black;
         }
 
-        .dark-mode nav a, .dark-mode .logo {
-            color: #c9d1d9;
-        }
-
-        .dark-mode .content-box {
-            background: #161b22;
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-        }
-
         /* Responsive Design */
         @media screen and (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
+            .container {
+                margin-left: 0;
+            }
+
+            .sidebar {
+                width: 200px;
             }
 
             .menu-toggle {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                gap: 10px;
-                background: #333;
-                color: #fff;
-                padding: 10px;
-                position: absolute;
-                width: 100%;
-                left: 0;
-                top: 60px;
-            }
-
-            nav ul.active {
-                display: flex;
+                left: 10px;
+                top: 10px;
             }
 
             .hero {
@@ -287,96 +167,52 @@
                 width: 150px;
                 margin-bottom: 15px;
             }
-
-            .content-box {
-                max-width: 95%;
-                padding: 20px;
-            }
-
-            .team-container {
-                flex-direction: column;
-            }
-
-            .team-member {
-                width: 100%;
-            }
-        }
-
-        @media screen and (min-width: 769px) and (max-width: 1024px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero img {
-                width: 180px;
-                margin-bottom: 20px;
-            }
-
-            .content-box {
-                max-width: 90%;
-                padding: 30px;
-            }
-
-            .team-container {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .team-member {
-                width: 45%;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">AI Lab</div>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <nav>
-                <ul id="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#research-interests">Research Interests</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#work-experience">Work Experience</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#ourteam">Our Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="dark-mode-button" onclick="toggleDarkMode()">
-                <img src="" alt="">
-            </button>
-        </header>
 
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">AI Lab</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#research-interests">Research Interests</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#work-experience">Work Experience</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#ourteam">Our Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <div class="container">
+        <!-- Hero Section -->
         <section class="hero" id="home">
             <img src="my image .jpg" alt="Arafat Ali Mondal">
             <div class="hero-content">
                 <h2>Arafat Ali Mondal</h2>
-                <h2>Master's in AI</h2>
+                <h3>Master's in AI</h3>
                 <a href="https://www.makautexam.net/" target="_blank">
-                    Maulana Abul Kalam Azad University of Technology, West Bengal, India
+                    Maulana Abul Kalam Azad University of Technology, India
                 </a>
                 <p>
-                    I am Arafat Ali Mondal. I completed my Master’s in Artificial Intelligence in 2024 and have one year of experience in AI and sensor technology as a Research and Development Contributor at the CRTL Lab, NCSM, since March 2024. My work focuses on system design and AI/ML-driven applications, leveraging innovative technologies to develop efficient and intelligent solutions. My area of research is AI technology in agriculture and healthcare on other sensor tech. My master's thesis was to create an AI web and Android application for agriculture that promotes automation through ML and DL. I am also engaged in AI-based display and sensor technology, which is all about working on real-world applications integrating AI into interactive and automated devices. In healthcare, I work with experts in creating ML-based healthcare solutions that combine ML and sensor technology to create innovation. Without AI research, I have web development skills in frontend and backend development. I create user-centric, AI-enabled web applications with maximum emphasis on system optimization, scalability, and smooth user experiences. I have four research papers, comprising a peer-reviewed journal article and an IEEE conference paper. My dream is to combine AI, sensor technology, and web development and Application development in order to develop groundbreaking solutions in the healthcare and automation sectors and propel the development of AI-driven smart systems. I love machine learning, healthcare innovations, and soft robotics. Presently, I am looking for internship and PhD positions in these areas to further develop my skills and contribute to state-of-the-art research and development.
+                    I am Arafat Ali Mondal, a passionate researcher in AI for medicine and agriculture. My work focuses on AI-powered solutions for sensor-based applications, system design, and machine learning innovations. 
+                    Currently, I am seeking PhD and internship opportunities in AI-driven smart systems.
                 </p>
             </div>
         </section>
-
-        <!-- Add other sections (Research Interests, Education, Work Experience, Publications, Team, Contact) here -->
-
     </div>
 
     <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-
-        function toggleMenu() {
-            const navMenu = document.getElementById("nav-menu");
-            navMenu.classList.toggle("active");
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
         }
     </script>
+
 </body>
 </html>
